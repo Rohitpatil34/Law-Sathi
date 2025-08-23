@@ -1,8 +1,8 @@
 import React from 'react';
 import { Search, Users, Scale, Heart, Shield, FileText, Home, ChevronRight, MessageCircle } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Card, CardContent } from "@/components/ui/card"
+import { Button } from '../src/components/ui/button'
+import { Input } from '../src/components/ui/input'
+import { Card ,CardContent} from '../src/components/ui/Card'
 
 
 

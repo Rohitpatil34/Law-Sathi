@@ -49,7 +49,7 @@ const HeroSection = () => {
           <div className="flex justify-end">
             <button 
               className="bg-white text-black px-6 py-2 rounded-full hover:bg-gray-300"
-              onClick={() => navigate('/signup')} // Navigate to signup page
+              onClick={() => navigate('/signup')}  // Navigate to signup page
             >
               Sign up — it's free
             </button>
