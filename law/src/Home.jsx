@@ -3,6 +3,7 @@ import { Search, Users, Scale, Heart, Shield, FileText, Home, ChevronRight, Mess
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent } from "@/components/ui/card"
+import homewomen from "./assets/homewomen.jpg"
 
 
 
@@ -144,7 +145,7 @@ export default function LawSathiPage() {
               <div className="relative h-64 bg-gradient-to-r from-blue-600 to-purple-600">
                 <div className="absolute inset-0 bg-black/20"></div>
                 <img
-                  src="law/src/assets/legal-hero-bg(1).png"
+                  src={homewomen}
                   alt="Family Law"
                   className="absolute inset-0 w-full h-full object-cover mix-blend-overlay"
                 />
