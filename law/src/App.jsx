@@ -3,6 +3,7 @@ import HeroSection from './HeroSection';
 import AuthPage from './AuthPage';
 import IndiaBixHome from './Home';
 
+
 function App() {
   return (
     <Router>
