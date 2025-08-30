@@ -1,5 +1,5 @@
 import React from "react";
-import bgImage from "./assets/law-bg.jpg";
+import bgImage from "./assets/legal-bg.jpg";
 import { useNavigate } from 'react-router-dom'; // Add this import
 
 const HeroSection = () => {
