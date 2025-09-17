@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { Navbar } from "./components/ui/Navbar";
 import "./HeroSection.css";
  
+ 
 
 const HeroSection = () => {
   const navigate = useNavigate();

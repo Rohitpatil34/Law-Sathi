@@ -1,5 +1,5 @@
 import React from "react";
-import bgImage from "./assets/bluetexture.webp";
+import bgImage from "./assets/legal-bg.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "./firebase"; // make sure path is correct
