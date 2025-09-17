@@ -27,30 +27,7 @@ const AuthPage = ({ isLogin = true }) => {
         backgroundImage: `url(${bgImage})`,
       }}
     >
-      {/* Top Nav with Search Bar */}
-      <div className="flex justify-between items-center px-6 py-4 text-white">
-        <Link to="/" className="text-xl font-bold flex items-center gap-2 hover:underline">
-          <span>⚖️</span>
-          <span>India Bix</span>
-        </Link>
-        <div className="flex gap-4 items-center">
-          <Link to="/" className="hover:underline">Home</Link>
-          <Link to="#" className="hover:underline">Categories</Link>
-          <Link to="#" className="hover:underline">Online Test</Link>
-
-          {/* Search Bar */}
-          <div className="relative ml-2">
-            <input
-              type="text"
-              placeholder="Search"
-              className="rounded-full px-4 py-1 text-black w-40 md:w-48 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-            <span className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500">
-              🔍
-            </span>
-          </div>
-        </div>
-      </div>
+       
 
       {/* Auth Form - Centered */}
       <div className="flex-1 flex items-center justify-center">

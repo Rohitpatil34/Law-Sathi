@@ -1,13 +1,14 @@
 import React from "react";
+import "./card.css";
 
 export function Card({ children, className }) {
   return (
-    <div className={`rounded-2xl shadow-md bg-white p-4 ${className || ""}`}>
+    <div className={`card ${className || ""}`}>
       {children}
     </div>
   );
 }
 
 export function CardContent({ children, className }) {
-  return <div className={`p-2 ${className || ""}`}>{children}</div>;
+  return <div className={`card-content ${className || ""}`}>{children}</div>;
 }

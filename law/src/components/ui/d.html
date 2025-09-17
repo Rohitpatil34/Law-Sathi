@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ghostlamp | Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f8ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            display: flex;
+            width: 900px;
+            height: 550px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .image-section {
+            flex: 1;
+            background: linear-gradient(rgba(58, 83, 155, 0.7), rgba(58, 83, 155, 0.7)), 
+                        url('https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60') center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+        
+        .image-section h2 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+        
+        .image-section p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-top: 20px;
+        }
+        
+        .form-section {
+            flex: 1;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .form-section h2 {
+            color: #3a539b;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        
+        .welcome-text {
+            color: #777;
+            margin-bottom: 30px;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 500;
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+        
+        .input-group input:focus {
+            border-color: #3a539b;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(58, 83, 155, 0.2);
+        }
+        
+        .options {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 25px;
+        }
+        
+        .remember {
+            display: flex;
+            align-items: center;
+        }
+        
+        .remember input {
+            margin-right: 8px;
+        }
+        
+        .forgot {
+            color: #3a539b;
+            text-decoration: none;
+        }
+        
+        .forgot:hover {
+            text-decoration: underline;
+        }
+        
+        .btn {
+            background: #3a539b;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            transition: background 0.3s;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .btn:hover {
+            background: #2c4080;
+        }
+        
+        .create-account {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        
+        .create-account a {
+            color: #3a539b;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .create-account a:hover {
+            text-decoration: underline;
+        }
+        
+        .social-login {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .social-login p {
+            margin-bottom: 15px;
+            color: #777;
+            position: relative;
+        }
+        
+        .social-login p::before,
+        .social-login p::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 30%;
+            height: 1px;
+            background: #ddd;
+        }
+        
+        .social-login p::before {
+            left: 0;
+        }
+        
+        .social-login p::after {
+            right: 0;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        
+        .social-icon:hover {
+            transform: translateY(-3px);
+        }
+        
+        .facebook {
+            background: #3b5998;
+        }
+        
+        .twitter {
+            background: #1da1f2;
+        }
+        
+        .google {
+            background: #db4437;
+        }
+        
+        .token-info {
+            margin-top: 30px;
+            padding: 15px;
+            background: #f8f9ff;
+            border-radius: 8px;
+            border-left: 4px solid #3a539b;
+            display: none;
+        }
+        
+        .token-info h3 {
+            color: #3a539b;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .token-info p {
+            word-break: break-all;
+            font-family: monospace;
+            font-size: 14px;
+            color: #555;
+        }
+        
+        .error {
+            color: #e74c3c;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column;
+                width: 90%;
+                height: auto;
+            }
+            
+            .image-section {
+                padding: 30px;
+                min-height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Left side with image -->
+        <div class="image-section">
+            <div class="logo">GHOSTLAMP</div>
+            <h2>Welcome Back :)</h2>
+            <p>To keep connected with us please login with your personal information by email address and password</p>
+        </div>
+        
+        <!-- Right side with login form -->
+        <div class="form-section">
+            <h2>Login to Account</h2>
+            <p class="welcome-text">Please enter your email and password to continue</p>
+            
+            <form id="loginForm">
+                <div class="input-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" placeholder="Justin@ghostlamp.io" required>
+                </div>
+                
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" placeholder="Enter your password" required>
+                </div>
+                
+                <div class="options">
+                    <div class="remember">
+                        <input type="checkbox" id="remember">
+                        <label for="remember">Remember Me</label>
+                    </div>
+                    <a href="#" class="forgot">Forget Password?</a>
+                </div>
+                
+                <button type="submit" class="btn">Login Now</button>
+                
+                <div class="create-account">
+                    Don't have an account? <a href="#">Create Account</a>
+                </div>
+            </form>
+            
+            <div class="social-login">
+                <p>Or you can join with</p>
+                <div class="social-icons">
+                    <div class="social-icon facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </div>
+                    <div class="social-icon twitter">
+                        <i class="fab fa-twitter"></i>
+                    </div>
+                    <div class="social-icon google">
+                        <i class="fab fa-google"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="token-info" id="tokenInfo">
+                <h3>JWT Token Generated:</h3>
+                <p id="tokenText"></p>
+            </div>
+            
+            <div class="error" id="errorMsg">
+                Invalid credentials. Please try again.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const errorMsg = document.getElementById('errorMsg');
+            const tokenInfo = document.getElementById('tokenInfo');
+            
+            // Hide previous errors
+            errorMsg.style.display = 'none';
+            
+            // Simple validation
+            if (!email || !password) {
+                errorMsg.textContent = 'Please fill in all fields';
+                errorMsg.style.display = 'block';
+                return;
+            }
+            
+            // Email format validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                errorMsg.textContent = 'Please enter a valid email address';
+                errorMsg.style.display = 'block';
+                return;
+            }
+            
+            // In a real application, this would be an API call to your backend
+            // For demo purposes, we'll simulate a successful login with any valid email format
+            if (email && password) {
+                // Show loading state
+                const btn = document.querySelector('.btn');
+                const originalText = btn.textContent;
+                btn.textContent = 'Logging in...';
+                btn.disabled = true;
+                
+                // Simulate API call delay
+                setTimeout(() => {
+                    // Generate a mock JWT token (in a real app, this would come from the server)
+                    const mockToken = generateMockToken(email);
+                    
+                    // Display the token
+                    document.getElementById('tokenText').textContent = mockToken;
+                    tokenInfo.style.display = 'block';
+                    
+                    // Reset button state
+                    btn.textContent = originalText;
+                    btn.disabled = false;
+                    
+                    // In a real application, you would store the token and redirect
+                    // localStorage.setItem('jwtToken', mockToken);
+                    // window.location.href = '/dashboard';
+                }, 1500);
+            } else {
+                errorMsg.style.display = 'block';
+            }
+        });
+        
+        // Function to generate a mock JWT token for demonstration
+        function generateMockToken(email) {
+            // In a real application, the token would be generated by the server
+            // This is just a mock representation for demonstration purposes
+            const header = btoa(JSON.stringify({ alg: "HS256", typ: "JWT" })).replace(/=/g, '');
+            const payload = btoa(JSON.stringify({ 
+                email: email, 
+                userId: Math.floor(Math.random() * 10000),
+                name: email.split('@')[0],
+                iat: Math.floor(Date.now() / 1000),
+                exp: Math.floor(Date.now() / 1000) + (60 * 60 * 24) // 24 hours from now
+            })).replace(/=/g, '');
+            const signature = "mock-signature-for-demonstration-only";
+            
+            return `${header}.${payload}.${signature}`;
+        }
+        
+        // Add interactivity to social icons
+        document.querySelectorAll('.social-icon').forEach(icon => {
+            icon.addEventListener('click', function() {
+                alert('Social login would be implemented here');
+            });
+        });
+    </script>
+</body>
+</html>
