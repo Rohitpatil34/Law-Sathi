@@ -5,33 +5,53 @@
   margin-bottom: 2rem;
   display: flex;
   padding-left: 10px;
-  align-items: center; /* vertically align items */
+  align-items: center;
   justify-content: flex-start;
   font-size: large;
   font-family: 'Times New Roman', Times, serif;
+  color: #1e293b;
+}
+
+.title-icon {
+  margin-right: 0.5rem;
+  color: #2563eb;
 }
 
 .main-content-area {
   margin-top: 1rem;
-  padding-left: 1rem;
+  padding: 0 1rem 2rem 1rem;
 }
 
 .container {
   display: flex;
   flex-direction: column;
-  gap: 2rem; /* space between children */
+  gap: 2rem;
 }
 
 /* =====================
-   Hero Banner
+   Hero Banner with Black Fade
 ===================== */
 .hero-banner {
   position: relative;
-  height: 16rem; /* ~256px */
+  height: 16rem;
   border-radius: 0.75rem;
   overflow: hidden;
- 
-  background: linear-gradient(to right, #2563eb, #9333ea); /* fallback gradient */
+  background: #000; /* Black fallback */
+}
+
+.hero-banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.2) 0%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+  z-index: 2;
 }
 
 .hero-banner img {
@@ -40,15 +60,22 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  mix-blend-mode: overlay;
+  opacity: 0.8; /* Higher opacity with black fade */
+  filter: grayscale(20%); /* Slight desaturation for dramatic effect */
+  transition: all 0.5s ease;
+}
+
+.hero-banner:hover img {
+  opacity: 0.9;
+  filter: grayscale(10%);
 }
 
 .hero-content {
   position: relative;
   z-index: 10;
   padding: 2rem;
-  color: #fff; /* better readability */
-  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
 }
 
 .hero-content h2 {
@@ -59,7 +86,8 @@
 
 .hero-content p {
   font-size: 1rem;
-  color: #dbeafe; /* soft blue */
+  color: #e5e7eb; /* Light gray for better contrast against black */
+  font-weight: 400;
 }
 
 /* =====================
@@ -75,103 +103,166 @@
 .topic-card {
   transition: all 0.3s ease;
   cursor: pointer;
-  border-radius: 0.5rem;
+  border-radius: 0.75rem;
   background: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  padding: 1.25rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  min-height: 200px;
+  min-height: 180px;
 }
 
 .topic-card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px);
+  border-color: #93c5fd;
+}
+
+.topic-card-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.topic-card-content .icon {
+  color: #2563eb;
+  background: #dbeafe;
+  padding: 0.5rem;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
 }
 
 .topic-card h3 {
   font-weight: 600;
-  color: #111827;
-  font-size: 1rem;
+  color: #1e293b;
+  font-size: 1.1rem;
   margin-bottom: 0.5rem;
 }
 
-.topic-card-content {
+.topic-card p {
   font-size: 0.875rem;
   color: #4b5563;
   line-height: 1.5;
-   
-    
-
 }
-.topic-card-content1{
-    display: flex;
-     
-   
-} 
 
 /* =====================
    Recent Articles
 ===================== */
 .recent-articles {
-  margin-top: 2rem;
+  margin-top: 3rem;
+  padding: 1.5rem 0;
 }
 
 .recent-articles h2 {
   margin-bottom: 1.5rem;
   font-weight: 700;
   font-size: 1.5rem;
-  color: #1f2937;
+  color: #1e293b;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+.recent-articles h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(to right, #000, #374151);
+  border-radius: 2px;
 }
 
 .articles-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1.5rem;
 }
 
 .article-card {
   transition: all 0.3s ease;
-  border-radius: 0.5rem;
+  border-radius: 0.75rem;
   background: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e8f0;
   overflow: hidden;
 }
 
 .article-card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
   transform: translateY(-3px);
-}
-
-.article-image {
-  width: 100%;
-  height: 160px;
-  object-fit: cover;
+  border-color: #93c5fd;
 }
 
 .article-content {
-  padding: 1rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.article-icon {
+  color: #2563eb;
+  background: #dbeafe;
+  padding: 0.5rem;
+  border-radius: 8px;
+  align-self: flex-start;
 }
 
 .article-title {
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 600;
-  color: #111827;
+  color: #1e293b;
   margin-bottom: 0.5rem;
+  line-height: 1.4;
 }
 
 .article-description {
   font-size: 0.875rem;
   color: #4b5563;
-  line-height: 1.5;
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
 }
 
-/* Responsive Adjustments */
+.article-footer {
+  margin-top: auto;
+}
+
+.article-link {
+  color: #2563eb !important;
+  font-weight: 500;
+  padding: 0;
+  text-decoration: none;
+}
+
+.article-link:hover {
+  color: #1d4ed8 !important;
+  text-decoration: underline;
+}
+
+/* =====================
+   Responsive Adjustments
+===================== */
 @media (max-width: 640px) {
   .cards-container,
   .articles-grid {
     grid-template-columns: 1fr;
+  }
+  
+  .hero-content {
+    padding: 1.5rem;
+    text-align: center;
+  }
+  
+  .hero-content h2 {
+    font-size: 1.5rem;
+  }
+  
+  .hero-banner {
+    height: 14rem;
   }
 }
 
@@ -182,23 +273,33 @@
   }
 }
 
-.article-card h3 {
-  font-weight: 600;
-  font-size: 1.1rem;
+/* Animation for cards */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
-.article-meta {
-  font-size: 0.8rem;
-  color: #6b7280; /* neutral gray */
+.topic-card,
+.article-card {
+  animation: fadeInUp 0.6s ease forwards;
 }
 
-/* =====================
-   Utility Classes
-===================== */
-.text-center {
-  text-align: center;
+.topic-card:nth-child(2),
+.article-card:nth-child(2) {
+  animation-delay: 0.1s;
 }
 
-.text-muted {
-  color: #6b7280;
+.topic-card:nth-child(3),
+.article-card:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.topic-card:nth-child(4) {
+  animation-delay: 0.3s;
 }

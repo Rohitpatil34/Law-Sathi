@@ -1,77 +1,42 @@
-.hero {
-  width: 100vw;
+/* HeroSection.css */
+.hero-container {
+  position: relative;
+  width: 100%;
   height: 100vh;
-  background-size: cover;
-  background-position: center;
+  overflow: hidden;
+}
+
+.hero {
+  width: 100%;
+  height: 100%;
+  position: relative;
   display: flex;
   flex-direction: column;
 }
 
-/* Navbar */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 16px 24px;
-  color: white;
-}
-
-.logo {
-  font-size: 1.25rem;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 24px;
-}
-
-.nav-links a {
-  color: white;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-.nav-links a:hover {
-  text-decoration: underline;
-}
-
-.search-box {
-  position: relative;
-}
-
-.search-box input {
-  border-radius: 9999px;
-  padding: 6px 32px 6px 12px;
-  border: none;
-  outline: none;
-  color: black;
-}
-
-.search-box span {
+.hero-background {
   position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: black;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
 }
 
-.nav-links button {
-  background: white;
-  color: black;
-  padding: 6px 16px;
-  border-radius: 9999px;
-  border: none;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-
-.nav-links button:hover {
-  background: #e5e5e5;
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.3) 0%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+  z-index: 2;
 }
 
 /* Hero Content */
@@ -82,6 +47,8 @@
   justify-content: flex-end;
   color: white;
   padding: 0 24px;
+  position: relative;
+  z-index: 3;
 }
 
 .text-box {
@@ -94,30 +61,80 @@
   font-size: 2rem;
   font-weight: bold;
   margin-bottom: 8px;
+  line-height: 1.2;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .text-box p {
   font-size: 1.125rem;
-  margin-bottom: 16px;
+  margin-bottom: 24px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .text-box button {
   background: white;
   color: black;
-  padding: 10px 24px;
+  padding: 12px 28px;
   border-radius: 9999px;
   border: none;
   cursor: pointer;
-  transition: background 0.3s;
+  font-weight: 600;
+  transition: all 0.3s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .text-box button:hover {
   background: #d1d1d1;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
 }
 
-/* Responsive */
+/* Responsive Design */
 @media (min-width: 768px) {
   .text-box h1 {
     font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-content {
+    justify-content: center;
+    padding: 0 16px;
+  }
+  
+  .text-box {
+    text-align: center;
+    margin-right: 0;
+    max-width: 100%;
+    padding: 0 20px;
+  }
+  
+  .text-box h1 {
+    font-size: 1.8rem;
+  }
+  
+  .text-box p {
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+  
+  .text-box button {
+    padding: 14px 30px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .text-box h1 {
+    font-size: 1.6rem;
+  }
+  
+  .text-box p {
+    font-size: 0.95rem;
+  }
+  
+  .text-box button {
+    width: 100%;
+    max-width: 280px;
   }
 }

@@ -17,7 +17,7 @@ export function Maincontent() {
             <Card>
                 <div className="hero-banner">
                     <img
-                        src="/src/assets/legal-hero-bg(1).png"
+                        src="/src/assets/legal-bg.jpg"
                         alt="Family Law"
                         className="hero-image"
                     />
