@@ -16,11 +16,11 @@ export function Sidebar(){
                     <Users className="icon" />
                     Family Law
                   </a>
-                  <a href="#" className="nav-link">
+                  <a href="/CriminalLaw" className="nav-link">
                     <Shield className="icon" />
                     Criminal Law
                   </a>
-                  <a href="#" className="nav-link">
+                  <a href="/CivilLaw" className="nav-link">
                     <Scale className="icon" />
                     Civil Law
                   </a>
