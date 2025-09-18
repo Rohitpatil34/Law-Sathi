@@ -12,7 +12,7 @@ export function Sidebar(){
                   Categories
                 </h2>
                 <nav className="nav-stack">
-                  <a href="#" className="nav-link active">
+                  <a href="/FamilyLaw" className="nav-link active">
                     <Users className="icon" />
                     Family Law
                   </a>
@@ -24,15 +24,15 @@ export function Sidebar(){
                     <Scale className="icon" />
                     Civil Law
                   </a>
-                  <a href="#" className="nav-link">
+                  <a href="/DefenceLaw" className="nav-link">
                     <Shield className="icon" />
                     Defence Law
                   </a>
-                  <a href="#" className="nav-link">
+                  <a href="/BussinessLaw" className="nav-link">
                     <FileText className="icon" />
                     Business Law
                   </a>
-                  <a href="#" className="nav-link">
+                  <a href="/PropertyLaw" className="nav-link">
                     <Home className="icon" />
                     Property Law
                   </a>
