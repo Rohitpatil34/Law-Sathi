@@ -24,7 +24,7 @@ const HeroSection = () => {
           <div className="text-box">
             <h1>"Justice Begins with Awareness."</h1>
             <p>Educate. Explore. Empower.</p>
-            <button onClick={() => navigate('/signup')}>Sign up — it's free</button>
+            <button onClick={() => navigate('/signup')}>Sign up </button>
           </div>
         </div>
       </div>
