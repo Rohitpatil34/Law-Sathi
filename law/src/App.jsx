@@ -7,6 +7,7 @@ import Property from "./pages/PropertyLaw";
 import Bussiness from "./pages/Bussinesslaw";
 import Criminal from "./pages/Criminal";
 import Civil from  "./pages/Civil"
+import MCQTest from './pages/MCQtest';
 function App() {
   return (
     <Router>
@@ -17,6 +18,7 @@ function App() {
         <Route path="/CivilLaw" element={<Civil/>} /> 
           <Route path="/BussinessLaw" element={<Bussiness/>} />  
         <Route path="/DefenceLaw" element={<Defence/>} />
+        <Route path="/onlinetest" element={<MCQTest/>} />
         <Route path="/PropertyLaw" element={<Property/>} />
         <Route path="/login" element={<AuthPage isLogin={true} />} />
         <Route path="/signup" element={<AuthPage isLogin={false} />} />
