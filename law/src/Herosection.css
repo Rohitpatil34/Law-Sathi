@@ -221,10 +221,14 @@ p.typewriter {
     border-color: transparent;
   }
 }
+.text-box h1 {
+  margin-bottom: 1rem; /* space between header and animated text */
+}
+
 .animated-text {
-  font-size: 2rem;
-  min-height: 2rem; /* reserve space so layout doesn’t move */
-  line-height: 2rem;
+  font-size: 2.5rem; /* your increased size */
+  min-height: 3rem;   /* adjust min-height to match new font-size */
+  line-height: 3rem;
   text-align: center;
   transition: all 0.3s ease-in-out;
 }

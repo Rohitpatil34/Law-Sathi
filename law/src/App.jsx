@@ -6,7 +6,7 @@ import Defence from "./pages/DefenceLAw";
 import Property from "./pages/PropertyLaw";
 import Business from "./pages/Bussinesslaw"; // Corrected typo
 import Criminal from "./pages/Criminal";
-import Civil from  "./pages/Civil"
+// import Civil from  "./pages/Civil"
 import Marraige from "./pages/FamilyChapters"
 import Civil from "./pages/Civil";
 import MCQTest from './pages/MCQtest';
