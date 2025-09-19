@@ -4,7 +4,7 @@ import { Card, CardContent } from '/src/components/ui/Card'
 import { Button } from '/src/components/ui/button'
 import './maincontent.css'
 import './articles.css'
-
+import { Link } from "react-router-dom";
 export function Maincontent(props) {
   return (
     <main className="main-content-area">
@@ -26,16 +26,23 @@ export function Maincontent(props) {
 
       {/* Topic Cards */}
       <div className="container">
+       
+     
+ 
         <div className="cards-container">
           <Card className="topic-card">
-            <CardContent>
-              <div className="topic-card-content">
-                <Heart className="icon" size={24} />
-                <h3>{props.small1}</h3>
-                <p>{props.smallContent1}</p>
-              </div>
-            </CardContent>
+            <Link to="/FamilyLaw/MarriageLaws" className="no-style-link">
+              <CardContent>
+                <div className="topic-card-content">
+                  <Heart className="icon" size={24} />
+                  <h3>{props.small1}</h3>
+                  <p>{props.smallContent1}</p>
+                </div>
+              </CardContent>
+            </Link>
           </Card>
+
+          
 
           <Card className="topic-card">
             <CardContent>

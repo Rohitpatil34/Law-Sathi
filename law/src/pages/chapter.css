@@ -1,0 +1,142 @@
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: #f8f9fa;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            width: 100%;
+        }
+        
+        .header h1 {
+            font-size: 2.2rem;
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        
+        .header p {
+            font-size: 1.1rem;
+            color: #7f8c8d;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+        
+        .card {
+            background: white;
+            width: 260px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card-content {
+            padding: 25px 20px;
+            flex-grow: 1;
+            border-top: 4px solid;
+        }
+        
+        .card-content h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.25rem;
+        }
+        
+        .card-content p {
+            color: #7f8c8d;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+        
+        .card-footer {
+            padding: 15px 20px;
+            background: #f8f9fa;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .year {
+            background: #ecf0f1;
+            color: #7f8c8d;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        
+        /* Color for each card */
+        .card:nth-child(1) .card-content {
+            border-color: #ff7e5f;
+        }
+        
+        .card:nth-child(2) .card-content {
+            border-color: #00cdac;
+        }
+        
+        .card:nth-child(3) .card-content {
+            border-color: #6a11cb;
+        }
+        
+        .card:nth-child(4) .card-content {
+            border-color: #ffd700;
+        }
+        
+        @media (max-width: 1200px) {
+            .container {
+                max-width: 900px;
+            }
+            
+            .card {
+                width: 210px;
+            }
+        }
+        
+        @media (max-width: 900px) {
+            .container {
+                flex-wrap: wrap;
+                max-width: 600px;
+            }
+            
+            .card {
+                width: 270px;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .card {
+                width: 100%;
+                max-width: 350px;
+            }
+        }
+ 
+        
