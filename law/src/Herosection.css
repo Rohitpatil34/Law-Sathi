@@ -206,3 +206,35 @@
     font-size: 2.7rem; /* Increased from 2.1rem */
   }
 }
+/* Apply typewriter effect to your <p> */
+p.typewriter {
+  display: inline-block;
+  border-right: 2px solid white; /* blinking cursor */
+  padding-right: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: blink 0.7s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+.animated-text {
+  font-size: 2rem;
+  min-height: 2rem; /* reserve space so layout doesn’t move */
+  line-height: 2rem;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+}
+
+
+
+
+
+
+
+
+
+

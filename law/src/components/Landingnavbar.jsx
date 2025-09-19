@@ -77,7 +77,11 @@ export function LandingNavbar() {
             <div className={`dropdown-content ${dropdownOpen ? 'dropdown-open' : ''}`}>
               <Link to="/FamilyLaw" className="dropdown-link" onClick={closeMobileMenu}>Family Law</Link>
               <Link to="/criminal" className="dropdown-link" onClick={closeMobileMenu}>Criminal Law</Link>
-              <Link to="/business" className="dropdown-link" onClick={closeMobileMenu}>Business Law</Link>
+              <Link to="/civil" className="dropdown-link" onClick={closeMobileMenu}>Civil Law</Link>
+              <Link to="/Business" className="dropdown-link" onClick={closeMobileMenu}>Business Law</Link>
+              <Link to="/property" className="dropdown-link" onClick={closeMobileMenu}>Property Law</Link>
+              <Link to="/Defence" className="dropdown-link" onClick={closeMobileMenu}>Defence Law</Link>
+            
             </div>
           </div>
 

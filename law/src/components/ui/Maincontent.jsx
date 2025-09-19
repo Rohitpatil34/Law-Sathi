@@ -5,7 +5,7 @@ import { Card, CardContent } from '/src/components/ui/Card'
 import { Button } from '/src/components/ui/button'
 import './maincontent.css'
 import './articles.css'
-
+import { Link } from "react-router-dom";
 export function Maincontent(props) {
   return (
     <main className="main-content-area">
@@ -27,6 +27,9 @@ export function Maincontent(props) {
 
       {/* Topic Cards */}
       <div className="container">
+       
+     
+ 
         <div className="cards-container">
           {/* This card now links to the Marriage page */}
           <Link to="/FamilyLaw/Marriage">
