@@ -15,7 +15,7 @@ function App() {
         <Route path="/FamilyLaw" element={<Family/>} /> {/* After login/signup */}
         <Route path="/CriminalLaw" element={<Criminal/>} />
         <Route path="/CivilLaw" element={<Civil/>} /> 
-          <Route path="/BussinessLaw" element={<Bussiness/>} />  
+        <Route path="/BussinessLaw" element={<Bussiness/>} />  
         <Route path="/DefenceLaw" element={<Defence/>} />
         <Route path="/PropertyLaw" element={<Property/>} />
         <Route path="/login" element={<AuthPage isLogin={true} />} />
