@@ -49,7 +49,7 @@
 /* Main content area */
 .main-content {
   flex: 1;
-  margin-left: 280px; /* Match sidebar width */
+  margin-left: 10px; /* Match sidebar width */
   padding: 1.5rem;
   min-height: 100%;
 }
