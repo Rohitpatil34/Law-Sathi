@@ -4,6 +4,7 @@ import { Breadcrumps } from '../components/ui/Breadcrumps';
 import './family.css';
 import { Maincontent } from '../components/ui/Maincontent';
 import legal from "../assets/legal-bg.jpg";
+import { Outlet } from 'react-router-dom';
 
 export default function FamilyLaw() {
     return (
@@ -22,26 +23,29 @@ export default function FamilyLaw() {
                         <Breadcrumps />
                     </div>
                     
-                    {/* Add your main content here */}
+                    {/* ✅ Your main content here */}
                     <div className="content-area">
-                        <h1><Maincontent
-                            name="Family Law"
-                            img={legal}
-                            content="Understanding Family Law"
-                            contentSmall="Insights into marriage, divorce, and child custody."
-                            small1="Marriage"
-                            smallContent1="Legal aspects of marriage in India."
-                            small2="Divorce"
-                            smallContent2="Divorce laws explained."
-                            small3="Custody"
-                            smallContent3="Child custody rules."
-                            small4="Property"
-                            smallContent4="Division of assets in disputes."
-                            mainArticle="Recent Articles"
-                            article1="The Hindu Marriage Act"
-                            article2="Special Marriage Act"
+                         
+                            <Maincontent
+                                name="Family Law"
+                                img={legal}
+                                content="Understanding Family Law"
+                                contentSmall="Insights into marriage, divorce, and child custody."
+                                small1="Marriage"
+                                smallContent1="Legal aspects of marriage in India."
+                                small2="Divorce"
+                                smallContent2="Divorce laws explained."
+                                small3="Custody"
+                                smallContent3="Child custody rules."
+                                small4="Property"
+                                smallContent4="Division of assets in disputes."
+                                mainArticle="Recent Articles"
+                                article1="The Hindu Marriage Act"
+                                article2="Special Marriage Act"
                             />
-                        </h1>
+                         
+
+                        {/* ✅ Outlet must be separate, not inside Maincontent */}
                          
                     </div>
                 </div>

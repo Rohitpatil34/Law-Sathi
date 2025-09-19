@@ -7,12 +7,14 @@ import Property from "./pages/PropertyLaw";
 import Bussiness from "./pages/Bussinesslaw";
 import Criminal from "./pages/Criminal";
 import Civil from  "./pages/Civil"
+import Marraige from "./pages/FamilyChapters"
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<HeroSection/>} /> {/* Landing page */}
-        <Route path="/FamilyLaw" element={<Family/>} /> {/* After login/signup */}
+        <Route path="/FamilyLaw" element={<Family/>}/>
+        <Route path="/FamilyLaw/MarriageLaws" element={<Marraige/>}/>
         <Route path="/CriminalLaw" element={<Criminal/>} />
         <Route path="/CivilLaw" element={<Civil/>} /> 
           <Route path="/BussinessLaw" element={<Bussiness/>} />  
