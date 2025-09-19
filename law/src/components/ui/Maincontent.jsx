@@ -5,7 +5,6 @@ import { Card, CardContent } from '/src/components/ui/Card'
 import { Button } from '/src/components/ui/button'
 import './maincontent.css'
 import './articles.css'
-// import { Link } from "react-router-dom";
 export function Maincontent(props) {
   return (
     <main className="main-content-area">
