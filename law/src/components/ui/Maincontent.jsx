@@ -1,10 +1,10 @@
+import { Link } from 'react-router-dom'; // Added for navigation
 import { Search, Users, Scale, Heart, Shield, FileText, Home, ChevronRight, MessageCircle } from "lucide-react"
 import { Input } from '/src/components/ui/input'
 import { Card, CardContent } from '/src/components/ui/Card' 
 import { Button } from '/src/components/ui/button'
 import './maincontent.css'
 import './articles.css'
-import { Link } from "react-router-dom";
 export function Maincontent(props) {
   return (
     <main className="main-content-area">
@@ -30,8 +30,9 @@ export function Maincontent(props) {
      
  
         <div className="cards-container">
-          <Card className="topic-card">
-            <Link to="/FamilyLaw/MarriageLaws" className="no-style-link">
+          {/* This card now links to the Marriage page */}
+          <Link to="/FamilyLaw/Marriage">
+            <Card className="topic-card">
               <CardContent>
                 <div className="topic-card-content">
                   <Heart className="icon" size={24} />
@@ -39,10 +40,8 @@ export function Maincontent(props) {
                   <p>{props.smallContent1}</p>
                 </div>
               </CardContent>
-            </Link>
-          </Card>
-
-          
+            </Card>
+          </Link>
 
           <Card className="topic-card">
             <CardContent>
@@ -116,3 +115,4 @@ export function Maincontent(props) {
     </main>
   );
 }
+

@@ -206,3 +206,39 @@
     font-size: 2.7rem; /* Increased from 2.1rem */
   }
 }
+/* Apply typewriter effect to your <p> */
+p.typewriter {
+  display: inline-block;
+  border-right: 2px solid white; /* blinking cursor */
+  padding-right: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: blink 0.7s steps(1) infinite;
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+.text-box h1 {
+  margin-bottom: 1rem; /* space between header and animated text */
+}
+
+.animated-text {
+  font-size: 2.5rem; /* your increased size */
+  min-height: 3rem;   /* adjust min-height to match new font-size */
+  line-height: 3rem;
+  text-align: center;
+  transition: all 0.3s ease-in-out;
+}
+
+
+
+
+
+
+
+
+
+

@@ -92,7 +92,7 @@
   display: block; /* Force block display */
   width: 100%; /* Take full width */
   margin-top: 0; /* Remove any top margin */
-  font-size: 1rem;
+  font-size: 2rem;
   color: #e5e7eb;
   font-weight: 400;
 }

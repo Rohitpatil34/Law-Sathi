@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+// import axios from "axios";
 import './MCQtest.css';
 import { Navbar } from "@/components/ui/Navbar";
 
