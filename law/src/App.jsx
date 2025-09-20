@@ -7,19 +7,14 @@ import Property from "./pages/PropertyLaw";
 import Business from "./pages/Bussinesslaw"; // Corrected typo
 import Criminal from "./pages/Criminal";
 import Civil from  "./pages/Civil"
-import Marraige from "./pages/FamilyChapters"
+import MCQTest from "./pages/MCQTest";
+import MarriageFamily from './pages/MarriageFamily'; // ADDED: Import the new MarriageFamily component
 function App() {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<HeroSection/>} /> {/* Landing page */}
-        <Route path="/FamilyLaw" element={<Family/>}/>
-        <Route path="/FamilyLaw/MarriageLaws" element={<Marraige/>}/>
-        <Route path="/CriminalLaw" element={<Criminal/>} />
-        <Route path="/CivilLaw" element={<Civil/>} /> 
-          <Route path="/BussinessLaw" element={<Bussiness/>} />  
-        <Route path="/DefenceLaw" element={<Defence/>} />
-        <Route path="/PropertyLaw" element={<Property/>} />
+
         <Route path="/login" element={<AuthPage isLogin={true} />} />
         <Route path="/signup" element={<AuthPage isLogin={false} />} />
 
