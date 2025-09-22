@@ -4,6 +4,7 @@ import {
   getAllMainCategories,
   getSubcategoriesByMainCategory,
   getActsByCategory,
+  getSectionsByActId,
 } from "../Controllers/actController.js";
 
 const router = express.Router();
@@ -16,6 +17,8 @@ router.get("/main-category/:mainCategory", getSubcategoriesByMainCategory);
 
 // 3. Get acts by category
 router.get("/category/:category", getActsByCategory);
+
+router.post("/section", getSectionsByActId);
 
 
 

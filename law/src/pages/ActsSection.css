@@ -1,0 +1,139 @@
+/* =====================
+   Page Layout
+===================== */
+.sections-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.sections-content {
+  display: flex;
+  gap: 1rem;
+}
+
+.sections-main {
+  flex: 1;
+  padding: 1rem 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  margin-top: 1.5rem; /* Space below breadcrumbs */
+}
+
+/* =====================
+   Page Title
+===================== */
+.sections-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 1.5rem;
+  margin-top: 1rem; /* Space from breadcrumbs */
+  border-left: 4px solid #2563eb;
+  padding-left: 0.75rem;
+}
+
+/* =====================
+   Section Card
+===================== */
+.section-card {
+  border: 1px solid #e2e8f0;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  background: #fff;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.section-card:hover {
+  box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+  border-color: #93c5fd;
+}
+
+/* =====================
+   Header
+===================== */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.section-header h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 0;
+  color: #1e293b;
+}
+
+.section-header span {
+  font-size: 1.2rem;
+  color: #64748b;
+  transition: transform 0.3s ease;
+}
+
+.section-card.open .section-header span {
+  transform: rotate(180deg);
+}
+
+/* =====================
+   Section Content
+===================== */
+.section-content {
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+  color: #374151;
+  line-height: 1.6;
+  white-space: pre-line;
+}
+
+/* =====================
+   Loading / Empty States
+===================== */
+.loading-text,
+.empty-text {
+  font-size: 1rem;
+  color: #6b7280;
+  padding: 1rem;
+  text-align: center;
+}
+
+/* =====================
+   Responsive Adjustments
+===================== */
+@media (max-width: 1024px) {
+  .sections-main {
+    padding: 1rem 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .sections-content {
+    flex-direction: column;
+    gap: 0;
+  }
+  .sections-main {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .sections-main {
+    padding: 0.75rem;
+  }
+
+  .sections-title {
+    font-size: 1.3rem;
+  }
+
+  .section-header h3 {
+    font-size: 1rem;
+  }
+
+  .section-content {
+    font-size: 0.9rem;
+  }
+}

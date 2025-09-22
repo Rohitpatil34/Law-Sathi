@@ -2,7 +2,7 @@ import React from "react";
 import bgImage from "./assets/legal-bg.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import { signInWithPopup } from "firebase/auth";
-import { auth, provider } from "./firebase"; // make sure path is correct
+import { auth, provider } from "./firebase";
 
 const AuthPage = ({ isLogin = true }) => {
   const navigate = useNavigate();
@@ -13,32 +13,39 @@ const AuthPage = ({ isLogin = true }) => {
       const user = result.user;
       console.log("Google User:", user);
       localStorage.setItem("user", JSON.stringify(user));
-      navigate("/home"); // Replace with your desired route
+
+      // ✅ Redirect to Family Law page on successful login
+      navigate("/FamilyLaw"); 
     } catch (error) {
       console.error("Google Login Error", error);
       alert("Google sign-in failed. Please try again.");
     }
   };
 
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    // ✅ Placeholder for email/password login/signup logic
+    // You can implement Firebase auth or custom API here
+    // On success, redirect:
+    navigate("/FamilyLaw");
+  };
+
   return (
     <div
       className="w-screen h-screen bg-cover bg-center flex flex-col"
-      style={{
-        backgroundImage: `url(${bgImage})`,
-      }}
+      style={{ backgroundImage: `url(${bgImage})` }}
     >
-       
-
-      {/* Auth Form - Centered */}
       <div className="flex-1 flex items-center justify-center">
         <div className="bg-white bg-opacity-90 rounded-lg p-8 w-full max-w-md">
           <h2 className="text-2xl font-bold mb-6 text-gray-800">
             {isLogin ? "Welcome back" : "Create an account"}
           </h2>
 
-          <form>
+          <form onSubmit={handleFormSubmit}>
             <div className="mb-4">
-              <label htmlFor="email" className="block text-gray-700 mb-2">Email</label>
+              <label htmlFor="email" className="block text-gray-700 mb-2">
+                Email
+              </label>
               <input
                 type="email"
                 id="email"
@@ -68,28 +75,24 @@ const AuthPage = ({ isLogin = true }) => {
           </form>
 
           {/* Divider */}
-          <div className="my-4">
-            <div className="flex items-center justify-center gap-2 text-gray-500">
-              <span className="w-full h-px bg-gray-300" />
-              <span>OR</span>
-              <span className="w-full h-px bg-gray-300" />
-            </div>
+          <div className="my-4 flex items-center justify-center gap-2 text-gray-500">
+            <span className="w-full h-px bg-gray-300" />
+            <span>OR</span>
+            <span className="w-full h-px bg-gray-300" />
           </div>
 
           {/* Google Sign-In */}
-          {/* Google Sign-In */}
-<button
-  onClick={handleGoogleLogin}
-  className="w-full flex items-center justify-center gap-3 border border-gray-300 py-2 px-4 rounded-lg hover:bg-gray-100 transition duration-200"
->
-  <img
-    src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
-    alt="Google logo"
-    className="w-5 h-5"
-  />
-  <span className="text-gray-700 font-medium">Continue with Google</span>
-</button>
-
+          <button
+            onClick={handleGoogleLogin}
+            className="w-full flex items-center justify-center gap-3 border border-gray-300 py-2 px-4 rounded-lg hover:bg-gray-100 transition duration-200"
+          >
+            <img
+              src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+              alt="Google logo"
+              className="w-5 h-5"
+            />
+            <span className="text-gray-700 font-medium">Continue with Google</span>
+          </button>
 
           {/* Switch Auth Mode */}
           <div className="text-center text-gray-600 mt-4">

@@ -158,6 +158,18 @@
 
 }
 
+.logout-btn {
+  color: #64748b;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+  padding: 0;
+}
+
+.logout-btn:hover {
+  color: #ef4444; /* red on hover */
+}
+
 @media (min-width: 769px) {
   .menu-btn {
     display: none;

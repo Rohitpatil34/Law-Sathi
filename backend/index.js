@@ -2,7 +2,9 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import connectDB from "./Config/connection.js";
+import categoryRoute from "./Routes/actRoutes.js"
 import ActRoute from "./Routes/Acts.js"
+import { generateMcqForLaw } from "./Controllers/onlineTest.js";
 dotenv.config();
 
 const PORT = process.env.PORT || 8000;
@@ -19,7 +21,11 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/health", (req, res) => {
   res.send("OK");
 });
-app.use("/acts", ActRoute);
+// app.use("/acts", ActRoute);
+app.use("/act", categoryRoute);
+app.post("/test", generateMcqForLaw);
+
+
 
 // checkAndSendEmails()
 app.listen(PORT, () => {

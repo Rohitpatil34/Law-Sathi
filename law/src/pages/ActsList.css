@@ -1,0 +1,402 @@
+/* ActsList Page Layout */
+.acts-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.acts-content {
+  display: flex;
+  gap: 1rem;
+}
+
+.acts-main {
+  flex: 1;
+  padding: 1rem 1rem;
+  max-width: 1600px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Page Header */
+.page-header {
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1e293b;
+  padding-left: 0.5rem;
+}
+
+.page-header svg {
+  margin-right: 0.5rem;
+  color: #2563eb;
+}
+
+/* Hero Banner */
+.hero-banner {
+  position: relative;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  margin-bottom: 2rem;
+  height: 16rem;
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.5s ease;
+}
+
+.hero-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.4), rgba(0,0,0,0.7));
+  z-index: 5;
+  transition: all 0.5s ease;
+}
+
+.hero-banner:hover::before {
+  background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6));
+}
+
+.hero-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+  padding: 2rem;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.8);
+}
+
+.hero-text h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.hero-text p {
+  font-size: 1.1rem;
+  font-weight: 400;
+  margin-top: 0;
+  color: #e5e7eb;
+}
+
+/* Acts Grid - Square Cards Layout */
+.acts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
+/* Square Card Container */
+.act-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  height: 180px;
+}
+
+/* Act Card - Square Design */
+.act-card {
+  border-radius: 0.75rem;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  top: 0;
+}
+
+.act-card:hover {
+  /* Removed transform: translateY to prevent upward movement */
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  border-color: #93c5fd;
+  top: -3px; /* Alternative to translateY for visual effect without layout shift */
+}
+
+.act-card-content {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: relative;
+}
+
+.card-text-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-grow: 1;
+  gap: 1rem;
+}
+
+.act-card-content h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: 4.2em;
+  padding: 0 0.5rem;
+}
+
+.act-button {
+  font-weight: 500;
+  color: #2563eb;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 0.75rem;
+  margin-top: auto;
+  border-top: 1px solid #f1f5f9;
+  width: 100%;
+  transition: color 0.2s ease;
+}
+
+.act-button:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
+/* Pagination */
+.pagination {
+  margin-top: 2.5rem;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.page-number {
+  padding: 0.5rem 0.9rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 42px;
+  text-align: center;
+}
+
+.page-number:hover {
+  background: #f1f5f9;
+}
+
+.page-number.active {
+  background: #4f46e5;
+  color: white;
+  border-color: #4f46e5;
+}
+
+.page-arrow {
+  padding: 0.5rem 0.8rem;
+  border: 1px solid #ddd;
+  background: #f8fafc;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.page-arrow:hover {
+  background: #e2e8f0;
+}
+
+.page-arrow:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .acts-main {
+    padding: 1rem 1.5rem;
+  }
+  
+  .acts-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.25rem;
+  }
+  
+  .act-card-link {
+    height: 170px;
+  }
+  
+  .hero-banner {
+    height: 14rem;
+  }
+  
+  .hero-text h2 {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .acts-content {
+    flex-direction: column;
+    gap: 0;
+  }
+  
+  .acts-main {
+    padding: 1rem;
+  }
+  
+  .acts-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+  
+  .act-card-link {
+    height: 160px;
+  }
+  
+  .act-card-content {
+    padding: 1.25rem;
+  }
+  
+  .act-card-content h3 {
+    font-size: 1rem;
+    min-height: 3.8em;
+  }
+  
+  .hero-banner {
+    height: 12rem;
+  }
+  
+  .hero-text {
+    padding: 1.5rem;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .hero-text h2 {
+    font-size: 1.5rem;
+  }
+  
+  .hero-text p {
+    font-size: 1rem;
+  }
+  
+  .page-header {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .acts-grid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .act-card-link {
+    height: 150px;
+  }
+  
+  .act-card-content {
+    padding: 1rem;
+  }
+  
+  .act-card-content h3 {
+    font-size: 0.95rem;
+    min-height: 3.6em;
+    padding: 0;
+  }
+  
+  .act-button {
+    font-size: 0.9rem;
+    padding-top: 0.5rem;
+  }
+  
+  .hero-banner {
+    height: 10rem;
+  }
+  
+  .hero-text {
+    padding: 1rem;
+  }
+  
+  .hero-text h2 {
+    font-size: 1.3rem;
+  }
+  
+  .hero-text p {
+    font-size: 0.9rem;
+  }
+  
+  .page-header {
+    font-size: 1.1rem;
+  }
+  
+  .pagination {
+    gap: 0.25rem;
+  }
+  
+  .page-number, .page-arrow {
+    padding: 0.4rem 0.7rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .acts-main {
+    padding: 0.75rem;
+  }
+  
+  .act-card-link {
+    height: 140px;
+  }
+  
+  .act-card-content h3 {
+    font-size: 0.9rem;
+    min-height: 3.4em;
+  }
+  
+  .hero-banner {
+    height: 9rem;
+  }
+  
+  .hero-text h2 {
+    font-size: 1.2rem;
+  }
+  
+  .hero-text p {
+    font-size: 0.85rem;
+  }
+  
+  .page-header {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+}

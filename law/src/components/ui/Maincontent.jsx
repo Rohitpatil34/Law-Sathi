@@ -1,118 +1,98 @@
-import { Link } from 'react-router-dom'; // Added for navigation
-import { Search, Users, Scale, Heart, Shield, FileText, Home, ChevronRight, MessageCircle } from "lucide-react"
-import { Input } from '/src/components/ui/input'
-import { Card, CardContent } from '/src/components/ui/Card' 
-import { Button } from '/src/components/ui/button'
-import './maincontent.css'
-import './articles.css'
-export function Maincontent(props) {
+import { useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { Users, FileText } from "lucide-react";
+import { Card, CardContent } from '/src/components/ui/Card';
+import { Button } from '/src/components/ui/button';
+import axios from 'axios';
+import legalBg from '/src/assets/legal-bg.jpg';                     // sub category file 
+import './maincontent.css';
+import './articles.css';
+
+export function Maincontent() {
+  const { mainCategory } = useParams();
+  const [topics, setTopics] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchTopics = async () => {
+      try {
+        const res = await axios.get(
+          `http://localhost:8000/act/main-category/${encodeURIComponent(mainCategory)}`
+        );
+        setTopics(res.data); 
+      } catch (err) {
+        console.error("Error fetching topics:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchTopics();
+  }, [mainCategory]);
+
+  if (loading) return <p style={{ padding: "2rem" }}>Loading topics...</p>;
+
   return (
     <main className="main-content-area">
       <div className="page-header">
         <Users className="title-icon" />
-        <span>{props.name}</span>
+        <span>{mainCategory}</span>
       </div>
 
       {/* Hero Banner */}
       <Card>
         <div className="hero-banner">
-          <img src={props.img} alt="Family Law" className="hero-image" />
-          <div className="hero-content">
-            <h2>{props.content}</h2>
-            <p>{props.contentSmall}</p>
+          <img src={legalBg} alt="Law Banner" className="hero-image" />
+          <div className="hero-text-content">
+            <h2>{`Explore ${mainCategory}`}</h2>
+            <p>{`All topics under ${mainCategory}`}</p>
           </div>
         </div>
       </Card>
 
-      {/* Topic Cards */}
-      <div className="container">
-       
-     
- 
-        <div className="cards-container">
-          {/* This card now links to the Marriage page */}
-          <Link to="/FamilyLaw/Marriage">
-            <Card className="topic-card">
-              <CardContent>
-                <div className="topic-card-content">
-                  <Heart className="icon" size={24} />
-                  <h3>{props.small1}</h3>
-                  <p>{props.smallContent1}</p>
-                </div>
-              </CardContent>
-            </Card>
-          </Link>
-
-          <Card className="topic-card">
-            <CardContent>
-              <div className="topic-card-content">
-                <FileText className="icon" size={24} />
-                <h3>{props.small2}</h3>
-                <p>{props.smallContent2}</p>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="topic-card">
-            <CardContent>
-              <div className="topic-card-content">
-                <Users className="icon" size={24} />
-                <h3>{props.small3}</h3>
-                <p>{props.smallContent3}</p>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="topic-card">
-            <CardContent>
-              <div className="topic-card-content">
-                <Shield className="icon" size={24} />
-                <h3>{props.small4}</h3>
-                <p>{props.smallContent4}</p>
-              </div>
-            </CardContent>
-          </Card>
+      {/* Sub-categories */}
+      <div className="subcategories-wrapper">
+        <div className="subcategories-scroll">
+          {topics.map((topic, idx) => (
+            <Link 
+              key={idx} 
+              to={`/FamilyLaw/${encodeURIComponent(mainCategory)}/${encodeURIComponent(topic)}`}
+            >
+              <Card className="subcategory-card">
+                <CardContent>
+                  <div className="subcategory-text-content">
+                    <Users className="icon" size={28} />
+                    <h3>{topic}</h3>
+                  </div>
+                </CardContent>
+              </Card>
+            </Link>
+          ))}
         </div>
       </div>
 
       {/* Recent Articles */}
       <div className="recent-articles">
-        <h2>{props.mainArticle}</h2>
+        <h2>Recent Articles</h2>
         <div className="articles-grid">
-          <Card className="article-card">
-            <CardContent className="article-content">
-              <FileText className="article-icon" size={24} />
-              <h3 className="article-title">{props.article1}</h3>
-              <p className="article-description">
-                Comprehensive guide to the Hindu Marriage Act including all
-                sections and amendments.
-              </p>
-              <div className="article-footer">
-                <Button variant="link" className="article-link">
-                  Read More →
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card className="article-card">
-            <CardContent className="article-content">
-              <Heart className="article-icon" size={24} />
-              <h3 className="article-title">{props.article2}</h3>
-              <p className="article-description">
-                Understanding inter-religion marriages and legal procedures
-                under the Special Marriage Act.
-              </p>
-              <div className="article-footer">
-                <Button variant="link" className="article-link">
-                  Read More →
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
+          {topics.slice(0, 2).map((article, idx) => (
+            <Card key={idx} className="article-card">
+              <CardContent className="article-content">
+                <FileText className="article-icon" size={24} />
+                <h3 className="article-title">{article}</h3>
+                <p className="article-description">
+                  Learn more about {article} and its legal aspects.
+                </p>
+                <div className="article-footer">
+                  <Button variant="link" className="article-link">
+                    Read More →
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
         </div>
       </div>
     </main>
   );
 }
-

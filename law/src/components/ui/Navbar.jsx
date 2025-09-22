@@ -1,12 +1,33 @@
-
-import { Search, Scale, Menu } from "lucide-react";
+import { Search, Scale, Menu, LogOut } from "lucide-react";
 import { Input } from '/src/components/ui/input';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import './navbar.css';
 import { useState } from "react";
+import { auth } from "../../firebase";
+ // Firebase auth instance
 
 export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      // ✅ Firebase logout
+      if (auth) {
+        await auth.signOut();
+      }
+
+      // ✅ Clear local storage
+      localStorage.removeItem("user");
+
+      // ✅ Redirect to home page
+      navigate("/");
+    } catch (error) {
+      console.error("Logout Error:", error);
+      alert("Failed to logout. Try again.");
+    }
+  };
+
   return (
     <header className="site-header">
       <div className="container">
@@ -33,7 +54,7 @@ export function Navbar() {
             </div>
           </div>
 
-          {/* Mobile menu button (moved beside search) */}
+          {/* Mobile menu button */}
           <button
             className="menu-btn"
             aria-label="Toggle navigation menu"
@@ -44,15 +65,18 @@ export function Navbar() {
 
           {/* Navigation */}
           <nav className={`nav${menuOpen ? " nav-open" : ""}`}>
-            <Link to="/" className="nav-link">
-              Home
-            </Link>
-            <Link to="/family" className="nav-link">
-              Catogories
-            </Link>
-            <a href="#" className="nav-link">
-              News
-            </a>
+            <Link to="/" className="nav-link">Home</Link>
+            <Link to="/family" className="nav-link">Categories</Link>
+            <a href="#" className="nav-link">News</a>
+
+            {/* ✅ Logout button */}
+            <button
+              onClick={handleLogout}
+              className="nav-link logout-btn"
+              style={{ background: "none", border: "none", cursor: "pointer" }}
+            >
+              Logout
+            </button>
           </nav>
         </div>
       </div>

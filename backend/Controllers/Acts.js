@@ -44,6 +44,7 @@ const handlegetaddSectiondata = async (req, res) => {
   }
 };
 
+
 export {
     handlegetActs,
     handlegetaddSectiondata
