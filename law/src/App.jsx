@@ -15,8 +15,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        {/* Home / Auth */}
-        <Route path="/" element={<HeroSection />} />
+        <Route path="/" element={<HeroSection />} /> {/* Landing page */}
         <Route path="/login" element={<AuthPage isLogin={true} />} />
         <Route path="/signup" element={<AuthPage isLogin={false} />} />
 
