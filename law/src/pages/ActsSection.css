@@ -102,6 +102,36 @@
 }
 
 /* =====================
+   Pagination
+===================== */
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  gap: 0.5rem;
+}
+
+.pagination button {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #2563eb;
+  background: #fff;
+  color: #2563eb;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.pagination button:hover {
+  background: #2563eb;
+  color: #fff;
+}
+
+.pagination button.active {
+  background: #2563eb;
+  color: #fff;
+}
+
+/* =====================
    Responsive Adjustments
 ===================== */
 @media (max-width: 1024px) {

@@ -4,7 +4,7 @@ import { Users, FileText } from "lucide-react";
 import { Card, CardContent } from '/src/components/ui/Card';
 import { Button } from '/src/components/ui/button';
 import axios from 'axios';
-import legalBg from '/src/assets/legal-bg.jpg';                     // sub category file 
+import legalBg from '/src/assets/legal-bg.jpg';
 import './maincontent.css';
 import './articles.css';
 
@@ -19,14 +19,13 @@ export function Maincontent() {
         const res = await axios.get(
           `http://localhost:8000/act/main-category/${encodeURIComponent(mainCategory)}`
         );
-        setTopics(res.data); 
+        setTopics(res.data);
       } catch (err) {
         console.error("Error fetching topics:", err);
       } finally {
         setLoading(false);
       }
     };
-
     fetchTopics();
   }, [mainCategory]);
 
@@ -34,6 +33,7 @@ export function Maincontent() {
 
   return (
     <main className="main-content-area">
+      {/* Page Header */}
       <div className="page-header">
         <Users className="title-icon" />
         <span>{mainCategory}</span>
@@ -50,12 +50,12 @@ export function Maincontent() {
         </div>
       </Card>
 
-      {/* Sub-categories */}
+      {/* Sub-categories Horizontal Scroll */}
       <div className="subcategories-wrapper">
         <div className="subcategories-scroll">
           {topics.map((topic, idx) => (
-            <Link 
-              key={idx} 
+            <Link
+              key={idx}
               to={`/FamilyLaw/${encodeURIComponent(mainCategory)}/${encodeURIComponent(topic)}`}
             >
               <Card className="subcategory-card">

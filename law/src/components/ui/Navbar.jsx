@@ -1,10 +1,10 @@
-import { Search, Scale, Menu, LogOut } from "lucide-react";
+// src/components/ui/Navbar.jsx
+import { Search, Scale, Menu } from "lucide-react";
 import { Input } from '/src/components/ui/input';
 import { Link, useNavigate } from "react-router-dom";
 import './navbar.css';
 import { useState } from "react";
 import { auth } from "../../firebase";
- // Firebase auth instance
 
 export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -12,15 +12,10 @@ export function Navbar() {
 
   const handleLogout = async () => {
     try {
-      // ✅ Firebase logout
       if (auth) {
         await auth.signOut();
       }
-
-      // ✅ Clear local storage
       localStorage.removeItem("user");
-
-      // ✅ Redirect to home page
       navigate("/");
     } catch (error) {
       console.error("Logout Error:", error);
@@ -66,10 +61,8 @@ export function Navbar() {
           {/* Navigation */}
           <nav className={`nav${menuOpen ? " nav-open" : ""}`}>
             <Link to="/" className="nav-link">Home</Link>
-            <Link to="/family" className="nav-link">Categories</Link>
-            <a href="#" className="nav-link">News</a>
-
-            {/* ✅ Logout button */}
+            <Link to="/FamilyLaw" className="nav-link">Categories</Link>
+            <Link to="/news" className="nav-link">News</Link> {/* ✅ Updated */}
             <button
               onClick={handleLogout}
               className="nav-link logout-btn"

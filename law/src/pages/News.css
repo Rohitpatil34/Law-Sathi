@@ -1,0 +1,155 @@
+/* src/pages/News.css */
+
+.news-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.news-content {
+  display: flex;
+  flex: 1;
+  margin-top: 1rem;
+}
+
+.news-main {
+  flex: 1;
+  padding: 20px;
+  background: #f8f9fa;
+}
+
+/* Back Button */
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: #f3f4f6;
+  color: #111827;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 16px;
+  font-size: 0.95rem;
+  transition: background 0.2s;
+}
+
+.back-btn:hover {
+  background: #e5e7eb;
+}
+
+/* Page Header */
+.page-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.page-header h1 {
+  font-size: 2rem;
+  margin-bottom: 5px;
+  color: #222;
+}
+
+.page-subtitle {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Search Form */
+.news-search-form {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+
+.news-search-input {
+  padding: 10px;
+  width: 420px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.news-search-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: #0056b3;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.news-search-btn:hover {
+  background: #003d80;
+}
+
+/* Loader */
+.news-loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  color: #444;
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+  margin-right: 8px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* News Grid */
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.news-card {
+  background: #fff;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+
+.news-card:hover {
+  transform: translateY(-5px);
+}
+
+.news-title {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+.news-desc {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 12px;
+}
+
+.news-link {
+  font-weight: bold;
+  color: #0056b3;
+  text-decoration: none;
+}
+
+.news-link:hover {
+  text-decoration: underline;
+}
+
+.no-news {
+  text-align: center;
+  font-size: 1rem;
+  color: #777;
+}

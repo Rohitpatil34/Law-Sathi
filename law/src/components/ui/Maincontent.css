@@ -22,24 +22,10 @@
 }
 
 /* =====================
-   Sticky Breadcrumps
-===================== */
-.breadcrumps {
-  position: sticky;
-  top: 80px; /* adjust to match Navbar height */
-  z-index: 50;
-  background: #fff;
-  padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
-  margin-bottom: 1rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-  transition: all 0.3s ease;
-}
-
-/* =====================
    Hero Banner
 ===================== */
 .hero-banner {
+  position: relative;
   height: 16rem;
   border-radius: 0.75rem;
   overflow: hidden;
@@ -85,6 +71,7 @@
   font-weight: 700;
   margin-bottom: 0.5rem;
   word-wrap: break-word;
+  overflow-wrap: anywhere;
 }
 
 .hero-text-content p {
@@ -93,10 +80,11 @@
   font-weight: 400;
   margin-top: 0;
   word-wrap: break-word;
+  overflow-wrap: anywhere;
 }
 
 /* =====================
-   Subcategory Cards (Cursoral)
+   Subcategory Cards (Horizontal Scroll)
 ===================== */
 .subcategories-wrapper {
   margin: 2rem 0;
@@ -111,6 +99,7 @@
   cursor: grabbing;
 }
 
+/* Scrollbar for Webkit */
 .subcategories-wrapper::-webkit-scrollbar {
   height: 8px;
 }
@@ -124,10 +113,27 @@
   border-radius: 4px;
 }
 
+/* Make subcategories scrollable */
 .subcategories-scroll {
   display: flex;
   gap: 1rem;
-  overflow: visible;
+  flex-wrap: nowrap;
+  overflow-x: auto;       /* visible scrollbar */
+  scrollbar-width: thin;  /* Firefox */
+  scrollbar-color: #35353632 transparent;
+}
+
+.subcategories-scroll::-webkit-scrollbar {
+  height: 8px;
+}
+
+.subcategories-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.subcategories-scroll::-webkit-scrollbar-thumb {
+  background-color: #2563eb;
+  border-radius: 4px;
 }
 
 .subcategory-card {
@@ -175,11 +181,11 @@
   color: #1e293b;
   margin: 0;
   line-height: 1.2;
-  overflow-wrap: break-word;
+  overflow-wrap: anywhere;
 }
 
 /* =====================
-   Recent Articles
+   Recent Articles / News
 ===================== */
 .recent-articles {
   margin-top: 3rem;
@@ -208,7 +214,7 @@
 
 .articles-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 1.5rem;
 }
 
@@ -218,6 +224,7 @@
   background: #fff;
   box-shadow: 0 4px 6px rgba(0,0,0,0.05);
   border: 1px solid #e2e8f0;
+  will-change: transform;
 }
 
 .article-card:hover {
@@ -270,6 +277,26 @@
 }
 
 /* =====================
+   Back Button
+===================== */
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: #f3f4f6;
+  border: 1px solid #d1d5db;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  transition: background 0.3s;
+}
+
+.back-btn:hover {
+  background: #e5e7eb;
+}
+
+/* =====================
    Responsive Adjustments
 ===================== */
 @media (max-width: 640px) {
@@ -299,6 +326,10 @@
 
   .subcategory-text-content h3 {
     font-size: 0.85rem;
+  }
+
+  .subcategories-scroll {
+    gap: 0.5rem;
   }
 }
 

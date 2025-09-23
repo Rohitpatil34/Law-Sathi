@@ -11,6 +11,10 @@ export default function ActDetails() {
   const [loading, setLoading] = useState(true);
   const [openIndex, setOpenIndex] = useState(null);
 
+  // Pagination state
+  const [currentPage, setCurrentPage] = useState(1);
+  const sectionsPerPage = 8;
+
   useEffect(() => {
     const fetchSections = async () => {
       try {
@@ -35,15 +39,21 @@ export default function ActDetails() {
     setOpenIndex(openIndex === index ? null : index);
   };
 
+  // Pagination calculations
+  const indexOfLastSection = currentPage * sectionsPerPage;
+  const indexOfFirstSection = indexOfLastSection - sectionsPerPage;
+  const currentSections = sections.slice(indexOfFirstSection, indexOfLastSection);
+  const totalPages = Math.ceil(sections.length / sectionsPerPage);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
   return (
     <div className="sections-page">
       <Navbar />
-
       <div className="sections-content">
         <Sidebar />
         <main className="sections-main">
           <Breadcrumps />
-
           <h2 className="sections-title">Act Sections</h2>
 
           {loading ? (
@@ -51,28 +61,44 @@ export default function ActDetails() {
           ) : sections.length === 0 ? (
             <p className="empty-text">No sections found.</p>
           ) : (
-            <div className="sections-list">
-              {sections.map((section, index) => (
-                <div
-                  key={section._id}
-                  className={`section-card ${
-                    openIndex === index ? "open" : ""
-                  }`}
-                  onClick={() => toggleDropdown(index)}
-                >
-                  <div className="section-header">
-                    <h3>
-                      {section.number} {section.title}
-                    </h3>
-                    <span>{openIndex === index ? "▲" : "▼"}</span>
+            <>
+              <div className="sections-list">
+                {currentSections.map((section, index) => (
+                  <div
+                    key={section._id}
+                    className={`section-card ${
+                      openIndex === index ? "open" : ""
+                    }`}
+                    onClick={() => toggleDropdown(index)}
+                  >
+                    <div className="section-header">
+                      <h3>
+                        {section.number} {section.title}
+                      </h3>
+                      <span>{openIndex === index ? "▲" : "▼"}</span>
+                    </div>
+                    {openIndex === index && (
+                      <div className="section-content">{section.content}</div>
+                    )}
                   </div>
+                ))}
+              </div>
 
-                  {openIndex === index && (
-                    <div className="section-content">{section.content}</div>
-                  )}
+              {/* Pagination */}
+              {totalPages > 1 && (
+                <div className="pagination">
+                  {Array.from({ length: totalPages }, (_, i) => (
+                    <button
+                      key={i + 1}
+                      onClick={() => paginate(i + 1)}
+                      className={currentPage === i + 1 ? "active" : ""}
+                    >
+                      {i + 1}
+                    </button>
+                  ))}
                 </div>
-              ))}
-            </div>
+              )}
+            </>
           )}
         </main>
       </div>

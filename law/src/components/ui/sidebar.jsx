@@ -1,4 +1,3 @@
-// Sidebar.jsx
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { FileText, ArrowRight } from "lucide-react";
@@ -10,6 +9,9 @@ export function Sidebar() {
   const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
+
+  // ✅ User state
+  const [user, setUser] = useState(null);
 
   const handleStartTest = () => {
     navigate('/onlinetest');
@@ -28,11 +30,16 @@ export function Sidebar() {
     };
 
     fetchCategories();
+
+    // ✅ Load user info from localStorage
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
   }, []);
 
   const handleCategoryClick = (cat) => {
     const urlCategory = encodeURIComponent(cat); // URL safe
-    // Pass the category name in state so breadcrumbs can display properly
     navigate(`/FamilyLaw/${urlCategory}`, { state: { categoryName: cat } });
   };
 
@@ -90,13 +97,21 @@ export function Sidebar() {
         </CardContent>
       </Card>
 
-      {/* User Info */}
+      {/* ✅ User Info (Dynamic) */}
       <Card>
         <CardContent className="card-content-pad">
-          <div>
-            <div style={{ fontWeight: 500, color: '#111827' }}>RohitPatil10</div>
-            <div className="small muted">rohitpatil@gmail.com</div>
-          </div>
+          {user ? (
+            <div>
+              <div style={{ fontWeight: 500, color: '#111827' }}>
+                {user.displayName || "Guest User"}
+              </div>
+              <div className="small muted">
+                {user.email || "No email available"}
+              </div>
+            </div>
+          ) : (
+            <div className="small muted">Not logged in</div>
+          )}
         </CardContent>
       </Card>
     </aside>
