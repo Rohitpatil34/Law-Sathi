@@ -11,7 +11,8 @@ import Property from "./pages/PropertyLaw";
 import MCQTest from './pages/MCQtest';
 import ActsList from './pages/ActsList';
 import ActsSection from './pages/ActsSection';
-import News from './pages/News';   // ✅ NEW
+import News from './pages/News';
+import Chatbot from './pages/Chatbot'; // <-- new import
 
 function App() {
   return (
@@ -21,23 +22,21 @@ function App() {
         <Route path="/login" element={<AuthPage isLogin={true} />} />
         <Route path="/signup" element={<AuthPage isLogin={false} />} />
 
-        {/* Family Law routes */}
         <Route path="/FamilyLaw/:mainCategory?" element={<Family />} />
         <Route path="/FamilyLaw/:mainCategory/:subcategory" element={<ActsList />} />
         <Route path="/FamilyLaw/:mainCategory/:subcategory/:actId" element={<ActsSection />} />
 
-        {/* Other law categories */}
         <Route path="/CriminalLaw" element={<Criminal />} />
         <Route path="/CivilLaw" element={<Civil />} />
         <Route path="/BusinessLaw" element={<Business />} />
         <Route path="/DefenceLaw" element={<Defence />} />
         <Route path="/PropertyLaw" element={<Property />} />
 
-        {/* Online test */}
         <Route path="/onlinetest" element={<MCQTest />} />
-
-        {/* ✅ News Page */}
         <Route path="/news" element={<News />} />
+
+        {/* Chatbot route */}
+        <Route path="/chatbot" element={<Chatbot />} />
       </Routes>
     </Router>
   );

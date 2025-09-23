@@ -1,9 +1,9 @@
 // src/components/ui/Navbar.jsx
+import React, { useState } from "react";
 import { Search, Scale, Menu } from "lucide-react";
 import { Input } from '/src/components/ui/input';
 import { Link, useNavigate } from "react-router-dom";
 import './navbar.css';
-import { useState } from "react";
 import { auth } from "../../firebase";
 
 export function Navbar() {
@@ -12,7 +12,7 @@ export function Navbar() {
 
   const handleLogout = async () => {
     try {
-      if (auth) {
+      if (auth && auth.signOut) {
         await auth.signOut();
       }
       localStorage.removeItem("user");
@@ -29,9 +29,7 @@ export function Navbar() {
         <div className="header-row">
           {/* Logo */}
           <div className="logo">
-            <div className="logo-badge">
-              <Scale />
-            </div>
+            <div className="logo-badge"><Scale /></div>
             <div className="logo-text">LawSathi</div>
           </div>
 
@@ -43,9 +41,7 @@ export function Navbar() {
                 placeholder="Search laws..."
                 className="search-input"
               />
-              <div className="search-icon">
-                <Search />
-              </div>
+              <div className="search-icon"><Search /></div>
             </div>
           </div>
 
@@ -61,8 +57,12 @@ export function Navbar() {
           {/* Navigation */}
           <nav className={`nav${menuOpen ? " nav-open" : ""}`}>
             <Link to="/" className="nav-link">Home</Link>
-            <Link to="/FamilyLaw" className="nav-link">Categories</Link>
-            <Link to="/news" className="nav-link">News</Link> {/* ✅ Updated */}
+
+            {/* Changed: Categories -> Chatbot */}
+            <Link to="/chatbot" className="nav-link">Chatbot</Link>
+
+            <Link to="/news" className="nav-link">News</Link>
+
             <button
               onClick={handleLogout}
               className="nav-link logout-btn"
