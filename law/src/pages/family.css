@@ -39,17 +39,7 @@
   max-width: 100%;
 }
 
-/* Breadcrumbs */
-.breadcrumbs-wrapper {
-  position: static; /* Changed from sticky */
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  z-index: auto;
-  border-radius: 12px;
-  margin-bottom: 1.5rem;
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.04);
-  padding: 0.8rem 1.5rem; /* Adjusted padding slightly */
-}
+
 
 
 /* Content Area */

@@ -109,6 +109,7 @@
 
 .chatbox {
   flex: 1;
+  min-height: 0; /* Added this line to fix input visibility */
   overflow-y: auto;
   overflow-x: hidden;
   padding: 4rem;
@@ -171,7 +172,6 @@
   transform: translateY(-50%);
   width: 36px;
   height: 36px;
-
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -208,6 +208,7 @@
   gap: 0.8rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   transition: all 0.3s ease;
+  flex-shrink: 0; /* Added to prevent input from shrinking */
 }
 
 .chat-input-wrapper:focus-within {
@@ -380,11 +381,13 @@
     padding: 1rem;
     gap: 1rem;
     border-radius: 12px;
+    min-height: 0; /* Added for mobile */
   }
 
   .chat-input-wrapper {
     padding: 0.7rem;
     border-radius: 20px;
+    flex-shrink: 0; /* Added for mobile */
   }
 
   .chatbot-suggestions {
@@ -428,6 +431,14 @@
 
   .chatbot-subtitle {
     font-size: 1rem;
+  }
+
+  .chatbox {
+    min-height: 0; /* Added for small mobile */
+  }
+
+  .chat-input-wrapper {
+    flex-shrink: 0; /* Added for small mobile */
   }
 }
 
