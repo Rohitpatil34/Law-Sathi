@@ -34,8 +34,8 @@ LawSathi simplifies Indian laws by providing:
 
 | Layer      | Tools Used                     |
 |------------|--------------------------------|
-| Frontend   | React.js, Tailwind CSS, Lottie |
-| Backend    | Flask (Python)                 |
+| Frontend   | React.js, Tailwind CSS         |
+| Backend    | Express.js and node.js         |
 | Database   | MongoDB (NoSQL)                |
 | AI/NLP     | OpenAI LLM APIs, gTTS          |
 | DevOps     | Git, GitHub                    |
@@ -60,8 +60,7 @@ LawSathi simplifies Indian laws by providing:
 1. **User Interface (React.js)** – Clean and responsive layout with law categories and test modules  
 2. **Backend API (Flask)** – Serves legal content, quiz data, and chatbot integration  
 3. **Database (MongoDB)** – Stores structured legal data, mock test records, and user profiles  
-4. **AI Agents** –  
-   - Text Simplifier (LLM)  
+4. **AI Agents** –   
    - Chatbot Q&A (LLM)  
    - Hindi Translator + TTS  
 
