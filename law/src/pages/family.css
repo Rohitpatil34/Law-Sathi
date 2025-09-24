@@ -28,19 +28,9 @@
 }
 
 /* Sidebar */
-.sidebar-wrapper {
-  width: 280px;
-  flex-shrink: 0;
-  position: sticky;
-  top: 100px;
-  height: calc(100vh - 120px);
-  overflow-y: auto;
-  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
-  border-radius: 16px;
-  border: 1px solid #e2e8f0;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-  padding: 1.5rem 0;
-}
+/* Sidebar */
+
+
 
 /* Main content */
 .main-content {
@@ -51,20 +41,20 @@
 
 /* Breadcrumbs */
 .breadcrumbs-wrapper {
-  position: sticky;
-  top: 90px;
+  position: static; /* Changed from sticky */
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
-  z-index: 10;
+  z-index: auto;
   border-radius: 12px;
   margin-bottom: 1.5rem;
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.04);
-  padding: 1rem 1.5rem;
+  padding: 0.8rem 1.5rem; /* Adjusted padding slightly */
 }
+
 
 /* Content Area */
 .content-area {
-  padding-top: 1rem;
+  padding-top: 0.5rem;
 }
 
 /* Welcome Page Styles */

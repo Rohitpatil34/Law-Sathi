@@ -13,7 +13,7 @@ export default function ActsList() {
   const { mainCategory, subcategory } = useParams();
   const [acts, setActs] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [actsPerPage] = useState(8); // Changed from 6 to 8
+  const [actsPerPage] = useState(8);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -22,7 +22,7 @@ export default function ActsList() {
         const res = await axios.get(
           `http://localhost:8000/act/category/${encodeURIComponent(subcategory)}`
         );
-        setActs(res.data); 
+        setActs(res.data);
       } catch (err) {
         console.error('Error fetching acts:', err);
       } finally {
@@ -32,7 +32,6 @@ export default function ActsList() {
     fetchActs();
   }, [subcategory]);
 
-  // Pagination logic
   const indexOfLastAct = currentPage * actsPerPage;
   const indexOfFirstAct = indexOfLastAct - actsPerPage;
   const currentActs = acts.slice(indexOfFirstAct, indexOfLastAct);
@@ -42,7 +41,6 @@ export default function ActsList() {
     if (pageNumber > 0 && pageNumber <= totalPages) setCurrentPage(pageNumber);
   };
 
-  // Get appropriate icon based on subcategory (for page header only)
   const getCategoryIcon = () => {
     switch(subcategory) {
       case 'Arbitration & Dispute Resolution':
@@ -60,75 +58,79 @@ export default function ActsList() {
       <div className="acts-content">
         <Sidebar />
         <main className="acts-main">
+          {/* Breadcrumbs */}
           <Breadcrumps />
 
-          {/* Page Header */}
-          <div className="page-header">
-            {getCategoryIcon()}
-            <span>{subcategory}</span>
-          </div>
-
-          {/* Hero Banner */}
-          <div className="hero-banner">
-            <img src={heroImg} alt="Legal Banner" className="hero-img" />
-            <div className="hero-text">
-              <h2>{`Explore ${subcategory}`}</h2>
-              <p>{`All topics under ${subcategory}`}</p>
+          {/* Header + Hero + Grid container */}
+          <div className="acts-container">
+            {/* Page Header */}
+            <div className="page-header">
+              {getCategoryIcon()}
+              <span>{subcategory}</span>
             </div>
-          </div>
 
-          {/* Acts Grid */}
-          <div className="acts-grid">
-            {currentActs.map((act) => (
-              <Link
-                key={act._id}
-                to={`/FamilyLaw/${encodeURIComponent(mainCategory)}/${encodeURIComponent(subcategory)}/${act._id}`}
-                className="act-card-link"
-              >
-                <Card className="act-card">
-                  <CardContent>
-                    <div className="act-card-content">
-                      <div className="card-text-content">
-                        <h3>{act.name}</h3>
-                        <span className="act-button">Read More →</span>
+            {/* Hero Banner */}
+            <div className="hero-banner">
+              <img src={heroImg} alt="Legal Banner" className="hero-img" />
+              <div className="hero-text">
+                <h2>{`Explore ${subcategory}`}</h2>
+                <p>{`All topics under ${subcategory}`}</p>
+              </div>
+            </div>
+
+            {/* Acts Grid */}
+            <div className="acts-grid">
+              {currentActs.map((act) => (
+                <Link
+                  key={act._id}
+                  to={`/FamilyLaw/${encodeURIComponent(mainCategory)}/${encodeURIComponent(subcategory)}/${act._id}`}
+                  className="act-card-link"
+                >
+                  <Card className="act-card">
+                    <CardContent>
+                      <div className="act-card-content">
+                        <div className="card-text-content">
+                          <h3>{act.name}</h3>
+                          <span className="act-button">Read More →</span>
+                        </div>
                       </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </Link>
-            ))}
-          </div>
-
-          {/* Pagination */}
-          {totalPages > 1 && (
-            <div className="pagination">
-              <button
-                onClick={() => paginate(currentPage - 1)}
-                disabled={currentPage === 1}
-                className="page-arrow"
-              >
-                <ChevronLeft size={20} />
-              </button>
-              {Array.from({ length: totalPages }, (_, i) => i + 1).map(
-                (number) => (
-                  <button
-                    key={number}
-                    onClick={() => paginate(number)}
-                    className={`page-number ${currentPage === number ? 'active' : ''}`}
-                  >
-                    {number}
-                  </button>
-                )
-              )}
-              <button
-                onClick={() => paginate(currentPage + 1)}
-                disabled={currentPage === totalPages}
-                className="page-arrow"
-              >
-                <ChevronRight size={20} />
-              </button>
+                    </CardContent>
+                  </Card>
+                </Link>
+              ))}
             </div>
-          )}
+
+            {/* Pagination */}
+            {totalPages > 1 && (
+              <div className="pagination">
+                <button
+                  onClick={() => paginate(currentPage - 1)}
+                  disabled={currentPage === 1}
+                  className="page-arrow"
+                >
+                  <ChevronLeft size={20} />
+                </button>
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map(
+                  (number) => (
+                    <button
+                      key={number}
+                      onClick={() => paginate(number)}
+                      className={`page-number ${currentPage === number ? 'active' : ''}`}
+                    >
+                      {number}
+                    </button>
+                  )
+                )}
+                <button
+                  onClick={() => paginate(currentPage + 1)}
+                  disabled={currentPage === totalPages}
+                  className="page-arrow"
+                >
+                  <ChevronRight size={20} />
+                </button>
+              </div>
+            )}
+          </div>
         </main>
       </div>
     </div>
