@@ -2,7 +2,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import HeroSection from './HeroSection';
 import AuthPage from './AuthPage';
-import Family from "./pages/FamilyLaw";
+import Family from "./pages/Welcome";
 import Criminal from "./pages/Criminal";
 import Civil from "./pages/Civil";
 import Business from "./pages/Bussinesslaw";
@@ -26,11 +26,11 @@ function App() {
         <Route path="/FamilyLaw/:mainCategory/:subcategory" element={<ActsList />} />
         <Route path="/FamilyLaw/:mainCategory/:subcategory/:actId" element={<ActsSection />} />
 
-        <Route path="/CriminalLaw" element={<Criminal />} />
+        {/* <Route path="/CriminalLaw" element={<Criminal />} />
         <Route path="/CivilLaw" element={<Civil />} />
         <Route path="/BusinessLaw" element={<Business />} />
         <Route path="/DefenceLaw" element={<Defence />} />
-        <Route path="/PropertyLaw" element={<Property />} />
+        <Route path="/PropertyLaw" element={<Property />} /> */}
 
         <Route path="/onlinetest" element={<MCQTest />} />
         <Route path="/news" element={<News />} />

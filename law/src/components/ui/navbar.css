@@ -1,3 +1,4 @@
+/* ================== Navbar Container ================== */
 .site-header {
   background-color: #fff;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
@@ -23,7 +24,7 @@
   position: relative;
 }
 
-/* Logo styles */
+/* ================== Logo ================== */
 .logo {
   display: flex;
   align-items: center;
@@ -48,7 +49,7 @@
   color: #1e293b;
 }
 
-/* Navigation styles */
+/* ================== Navigation ================== */
 .nav {
   display: flex;
   align-items: center;
@@ -68,10 +69,24 @@
   color: #2563eb;
 }
 
-/* Search styles */
+/* Logout button */
+.logout-btn {
+  color: #64748b;
+  font-weight: 500;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+  padding: 0;
+}
+
+.logout-btn:hover {
+  color: #ef4444;
+}
+
+/* ================== Search ================== */
 .search {
   flex: 1;
   max-width: 400px;
+  position: relative;
 }
 
 .search-wrap {
@@ -85,6 +100,7 @@
   border: 1px solid #e2e8f0;
   border-radius: 0.5rem;
   background-color: #f8fafc;
+  font-size: 0.9rem;
 }
 
 .search-icon {
@@ -93,9 +109,69 @@
   top: 50%;
   transform: translateY(-50%);
   color: #94a3b8;
+  pointer-events: none;
 }
 
-/* Responsive adjustments */
+/* ================== Suggestions Dropdown ================== */
+.suggestions-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 1000;
+  transition: all 0.2s ease;
+}
+
+.suggestion-item {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.suggestion-item strong {
+  color: #1e293b;
+}
+
+.suggestion-category {
+  font-size: 12px;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+.suggestion-item:hover {
+  background-color: #f0f4f8;
+  transform: translateX(3px);
+}
+
+.suggestion-item:active {
+  background-color: #e0e7ff;
+}
+
+/* Scrollbar */
+.suggestions-dropdown::-webkit-scrollbar {
+  width: 6px;
+}
+
+.suggestions-dropdown::-webkit-scrollbar-thumb {
+  background-color: #cbd5e1;
+  border-radius: 3px;
+}
+
+.suggestions-dropdown::-webkit-scrollbar-track {
+  background-color: #f8fafc;
+}
+
+/* ================== Responsive ================== */
 @media (max-width: 768px) {
   .header-row {
     flex-direction: row;
@@ -155,21 +231,9 @@
     opacity: 1;
     pointer-events: auto;
   }
-
 }
 
-.logout-btn {
-  color: #64748b;
-  font-weight: 500;
-  font-size: 0.9rem;
-  transition: color 0.2s;
-  padding: 0;
-}
-
-.logout-btn:hover {
-  color: #ef4444; /* red on hover */
-}
-
+/* Desktop adjustments */
 @media (min-width: 769px) {
   .menu-btn {
     display: none;
@@ -184,4 +248,14 @@
     opacity: 1;
     pointer-events: auto;
   }
+}
+
+/* ================== Dropdown Animation ================== */
+.fade-in {
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from {opacity: 0; transform: translateY(-5px);}
+  to {opacity: 1; transform: translateY(0);}
 }

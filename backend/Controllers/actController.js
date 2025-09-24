@@ -66,4 +66,30 @@ export const getSectionsByActId = async (req, res) => {
     res.status(500).json({ error: "Failed to fetch sections for the given act." });
   }
 };
+// backend/controllers/actController.js
+
+// @desc   Search Acts by name or category
+// @route  GET /api/acts/search?query=...
+// @access Public
+export const searchActs = async (req, res) => {
+  const { query } = req.query;
+
+  if (!query || query.trim() === "") {
+    return res.status(400).json({ message: "Query is required" });
+  }
+
+  try {
+    const results = await Acts.find({
+      $or: [
+        { name: { $regex: query, $options: "i" } },
+        { category: { $regex: query, $options: "i" } },
+      ],
+    }).limit(20);
+
+    res.json(results);
+  } catch (error) {
+    console.error("Search Error:", error);
+    res.status(500).json({ message: "Server error" });
+  }
+};
 

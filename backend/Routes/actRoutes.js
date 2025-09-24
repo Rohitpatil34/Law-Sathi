@@ -5,6 +5,7 @@ import {
   getSubcategoriesByMainCategory,
   getActsByCategory,
   getSectionsByActId,
+  searchActs, // 👈 import search controller
 } from "../Controllers/actController.js";
 
 const router = express.Router();
@@ -18,8 +19,10 @@ router.get("/main-category/:mainCategory", getSubcategoriesByMainCategory);
 // 3. Get acts by category
 router.get("/category/:category", getActsByCategory);
 
+// 4. Get sections by actId
 router.post("/section", getSectionsByActId);
 
-
+// 5. 🔎 Search acts by name or category
+router.get("/search", searchActs);
 
 export default router;
