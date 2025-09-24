@@ -5,6 +5,7 @@ import connectDB from "./Config/connection.js";
 import categoryRoute from "./Routes/actRoutes.js"
 import ActRoute from "./Routes/Acts.js"
 import { generateMcqForLaw } from "./Controllers/onlineTest.js";
+import { chatWithBot } from "./Controllers/chatbotcontroller.js";
 dotenv.config();
 
 const PORT = process.env.PORT || 8000;
@@ -24,6 +25,8 @@ app.get("/health", (req, res) => {
 // app.use("/acts", ActRoute);
 app.use("/act", categoryRoute);
 app.post("/test", generateMcqForLaw);
+app.post("/chatbot", chatWithBot);
+
 
 
 

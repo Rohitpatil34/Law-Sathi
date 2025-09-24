@@ -1,52 +1,89 @@
 // src/pages/Chatbot.jsx
-import React, { useEffect, useRef, useState } from "react";
-import axios from "axios";
+import React, { useState, useRef, useEffect } from "react";
 import { Navbar } from "../components/ui/Navbar";
-import { Sidebar } from "../components/ui/sidebar";
 import "./Chatbot.css";
 
 export default function Chatbot() {
   const [query, setQuery] = useState("");
-  const [messages, setMessages] = useState([]); // {role: 'user'|'assistant', content}
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const scrollRef = useRef(null);
+  const [messages, setMessages] = useState([]);
+  const [isTyping, setIsTyping] = useState(false);
+  const messagesEndRef = useRef(null);
 
-  // auto-scroll when messages update
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   useEffect(() => {
-    if (scrollRef.current) {
-      scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
-    }
-  }, [messages, loading]);
+    scrollToBottom();
+  }, [messages, isTyping]);
+
+  const getCurrentTime = () => {
+    return new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+  };
 
   const handleSend = async () => {
     const text = query.trim();
     if (!text) return;
 
-    const userMsg = { role: "user", content: text };
-    setMessages((m) => [...m, userMsg]);
+    // Add user message with timestamp
+    const userMessage = {
+      role: "user", 
+      content: text,
+      timestamp: getCurrentTime()
+    };
+    
+    setMessages((m) => [...m, userMessage]);
     setQuery("");
-    setLoading(true);
-    setError(null);
+    setIsTyping(true);
 
     try {
-      const res = await axios.post("http://localhost:8000/chat", { query: text });
-      const answer = res.data?.answer || "No response from server.";
-      setMessages((m) => [...m, { role: "assistant", content: answer }]);
-    } catch (err) {
-      console.error("Chat error:", err);
-      setError("Failed to get reply. Try again.");
-      setMessages((m) => [
-        ...m,
-        { role: "assistant", content: "⚠️ Error: could not reach the chatbot." },
-      ]);
+      const res = await fetch("http://localhost:8000/chatbot", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ query: text }),
+      });
+
+      const data = await res.json();
+
+      const assistantMessage = {
+        role: "assistant", 
+        content: data.answer || "Sorry, I couldn't find an answer.",
+        timestamp: getCurrentTime()
+      };
+      
+      setMessages((m) => [...m, assistantMessage]);
+    } catch (error) {
+      console.error("❌ Chatbot API error:", error);
+      const errorMessage = {
+        role: "assistant", 
+        content: "⚠️ Failed to connect to chatbot server. Please try again.",
+        timestamp: getCurrentTime()
+      };
+      setMessages((m) => [...m, errorMessage]);
     } finally {
-      setLoading(false);
+      setIsTyping(false);
     }
   };
 
-  const handleKeyDown = (e) => {
-    if ((e.key === "Enter" || e.key === "NumpadEnter") && !e.shiftKey) {
+  const quickReplies = [
+    "What is criminal law?",
+    "Explain Indian Contract Act 1872",
+    "What is Article 21 of the Constitution?",
+    "What is the IT Act 2000?",
+    "Define tort law",
+    "What are fundamental rights?"
+  ];
+
+  const handleQuickReply = (text) => {
+    setQuery(text);
+    // Auto-focus on input after selecting quick reply
+    setTimeout(() => {
+      document.querySelector('.chat-input')?.focus();
+    }, 100);
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
       handleSend();
     }
@@ -55,44 +92,77 @@ export default function Chatbot() {
   return (
     <div className="chatbot-page">
       <Navbar />
-      <div className="chat-layout">
-        <Sidebar />
-        <main className="chat-main">
-          <h2 className="chat-title">Legal Chatbot</h2>
 
-          <div className="chat-box" ref={scrollRef}>
-            {messages.length === 0 && !loading && (
-              <div className="chat-placeholder">Ask me anything about laws or Acts.</div>
-            )}
+      <div className="chatbot-container">
+        {/* Intro Screen */}
+        {messages.length === 0 && (
+          <div className="chatbot-intro">
+            <div className="chatbot-icon">⚖️</div>
+            <h2 className="chatbot-title">Hello! I'm your Legal Assistant</h2>
+            <p className="chatbot-subtitle">
+              Ask me about Indian laws, sections, acts, or legal concepts. 
+              I'll provide accurate information to help you understand the legal landscape.
+            </p>
 
+            <div className="chatbot-suggestions">
+              {quickReplies.map((suggestion, index) => (
+                <button
+                  key={index}
+                  onClick={() => handleQuickReply(suggestion)}
+                  className="suggestion-btn"
+                >
+                  {suggestion}
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Chat Messages */}
+        {messages.length > 0 && (
+          <div className="chatbox">
             {messages.map((msg, idx) => (
-              <div
-                key={idx}
-                className={`chat-msg ${msg.role === "user" ? "user" : "assistant"}`}
-              >
+              <div key={idx} className={`chat-msg ${msg.role}`}>
                 {msg.content}
+                <div className="chat-timestamp">{msg.timestamp}</div>
               </div>
             ))}
 
-            {loading && <div className="chat-msg assistant">Typing...</div>}
-          </div>
+            {isTyping && (
+              <div className="typing-indicator">
+                <div className="typing-dot"></div>
+                <div className="typing-dot"></div>
+                <div className="typing-dot"></div>
+                <span style={{marginLeft: '10px', fontSize: '0.8rem', color: '#6b7280'}}>
+                  AI is thinking...
+                </span>
+              </div>
+            )}
 
-          {error && <div className="chat-error">{error}</div>}
-
-          <div className="chat-input-area">
-            <textarea
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              onKeyDown={handleKeyDown}
-              placeholder="Ask me about a law, section, or legal concept..."
-              className="chat-input"
-              rows={2}
-            />
-            <button onClick={handleSend} className="chat-send-btn" disabled={loading}>
-              {loading ? "Sending..." : "Send"}
-            </button>
+            <div ref={messagesEndRef} />
           </div>
-        </main>
+        )}
+
+        {/* Input Box */}
+        <div className="chat-input-wrapper">
+          <input
+            type="text"
+            className="chat-input"
+            placeholder="Ask about Indian laws, acts, or legal concepts..."
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            onKeyDown={handleKeyPress}
+            disabled={isTyping}
+          />
+          <button
+            className="chat-send-btn"
+            onClick={handleSend}
+            disabled={isTyping || !query.trim()}
+            aria-label="Send message"
+          >
+            ➤
+          </button>
+        </div>
       </div>
     </div>
   );
