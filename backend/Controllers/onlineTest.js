@@ -9,7 +9,7 @@ export const generateMcqForLaw = async (req, res) => {
   }
 
   const genAI = new GoogleGenerativeAI('AIzaSyAUcCP-WoOD2Xy16-5YwgOJZ5Y--gXAfrA'); // store key safely in .env
-  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+  const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
   const prompt = `
 You are an expert legal educator.  
