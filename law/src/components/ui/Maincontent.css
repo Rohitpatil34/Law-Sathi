@@ -99,7 +99,6 @@
   cursor: grabbing;
 }
 
-/* Scrollbar for Webkit */
 .subcategories-wrapper::-webkit-scrollbar {
   height: 8px;
 }
@@ -113,14 +112,11 @@
   border-radius: 4px;
 }
 
-/* Make subcategories scrollable */
 .subcategories-scroll {
   display: flex;
   gap: 1rem;
   flex-wrap: nowrap;
-  overflow-x: auto;       /* visible scrollbar */
-  scrollbar-width: thin;  /* Firefox */
-  scrollbar-color: #35353632 transparent;
+  overflow-x: auto;
 }
 
 .subcategories-scroll::-webkit-scrollbar {
@@ -155,7 +151,7 @@
 }
 
 .subcategory-card:hover {
-  transform: none;
+  transform: translateY(-3px);
   box-shadow: 0 10px 20px rgba(0,0,0,0.12);
   border-color: #93c5fd;
 }
@@ -311,7 +307,7 @@
   }
 
   .hero-text-content h2 {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
   }
 
   .hero-text-content p {
@@ -319,28 +315,49 @@
   }
 
   .subcategory-card {
-    min-width: 160px;
-    max-width: 160px;
-    height: 120px;
+    min-width: 140px;
+    max-width: 140px;
+    height: 110px;
   }
 
   .subcategory-text-content h3 {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
   }
 
   .subcategories-scroll {
     gap: 0.5rem;
   }
+
+  .articles-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
 }
 
 @media (min-width: 641px) and (max-width: 1024px) {
+  .hero-banner {
+    height: 14rem;
+  }
+
+  .hero-text-content h2 {
+    font-size: 1.6rem;
+  }
+
+  .hero-text-content p {
+    font-size: 1rem;
+  }
+
   .subcategory-card {
-    min-width: 200px;
-    max-width: 200px;
-    height: 130px;
+    min-width: 180px;
+    max-width: 180px;
+    height: 120px;
   }
 
   .subcategory-text-content h3 {
     font-size: 0.9rem;
+  }
+
+  .articles-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   }
 }

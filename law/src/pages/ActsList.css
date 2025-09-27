@@ -11,6 +11,7 @@
 }
 
 .acts-main {
+  position: relative;
   flex: 1;
   padding: 1rem 1rem;
   max-width: 1600px;

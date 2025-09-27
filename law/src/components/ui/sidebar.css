@@ -1,8 +1,11 @@
 /* Sidebar Container */
 .sidebar {
-  width: 17rem;
+  width: 17rem;            /* desktop default */
+  max-width: 100%;         /* never overflow */
+  overflow-x: hidden;      /* 🚫 no horizontal scroll */
 }
 
+/* Stack spacing */
 .stack-vertical > * + * {
   margin-top: 1.5rem;
 }
@@ -38,14 +41,15 @@
   color: #374151;
   font-weight: 500;
   transition: all 0.2s ease;
+  word-break: break-word; /* 🚫 prevent long text overflow */
 }
 
 .nav-link .icon {
-  width: 20px;   /* consistent size */
+  width: 20px;
   height: 20px;
-  margin-right: 0.75rem; /* space between icon and text */
-  flex-shrink: 0;  /* prevents icon shrinking */
-  color: #2563eb;  /* consistent icon color */
+  margin-right: 0.75rem;
+  flex-shrink: 0;
+  color: #2563eb;
 }
 
 .nav-link:hover {
@@ -130,4 +134,18 @@
 
 .btn-arrow {
   margin-left: 0.5rem;
+}
+
+/* ✅ Responsive Sidebar */
+@media (max-width: 1024px) {
+  .sidebar {
+    width: 14rem;   /* slightly smaller */
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;         /* full width */
+    margin-bottom: 1.5rem; /* stack layout */
+  }
 }

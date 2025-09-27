@@ -7,6 +7,7 @@
   top: 0;
   z-index: 100;
   height: 60px;
+  width: 100%;
 }
 
 .container {
@@ -14,6 +15,7 @@
   margin: 0 auto; 
   padding: 0 1rem;
   height: 100%;
+  width: 100%;
 }
 
 .header-row {
@@ -22,6 +24,7 @@
   height: 100%;
   gap: 1rem;
   position: relative;
+  justify-content: space-between;
 }
 
 /* ================== Logo ================== */
@@ -47,6 +50,7 @@
 
 .logo-text {
   color: #1e293b;
+  white-space: nowrap;
 }
 
 /* ================== Navigation ================== */
@@ -54,7 +58,7 @@
   display: flex;
   align-items: center;
   gap: 1.5rem;
-  transition: max-height 0.3s, opacity 0.3s;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
 }
 
 .nav-link {
@@ -63,6 +67,7 @@
   font-weight: 500;
   transition: color 0.2s;
   font-size: 0.9rem;
+  white-space: nowrap;
 }
 
 .nav-link:hover {
@@ -76,6 +81,9 @@
   font-size: 0.9rem;
   transition: color 0.2s;
   padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .logout-btn:hover {
@@ -87,10 +95,12 @@
   flex: 1;
   max-width: 400px;
   position: relative;
+  min-width: 150px;
 }
 
 .search-wrap {
   position: relative;
+  width: 100%;
 }
 
 .search-input {
@@ -172,28 +182,34 @@
 }
 
 /* ================== Responsive ================== */
-@media (max-width: 768px) {
+
+/* --- Small devices (phones) --- */
+@media (max-width: 480px) {
   .header-row {
-    flex-direction: row;
     flex-wrap: wrap;
     gap: 0.5rem;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
+    height: auto;
+    padding: 0.25rem 0;
   }
 
-  .logo {
-    margin-bottom: 0;
+  .logo-text {
+    font-size: 1rem;
   }
 
   .search {
+    order: 3;
     width: 100%;
-    max-width: none;
-    margin-top: 0;
-    flex: 1;
-    min-width: 180px;
+    margin-top: 0.5rem;
   }
 
+  .search-input {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+/* --- Tablets & Small Laptops --- */
+@media (max-width: 1024px) {
   .menu-btn {
     display: flex;
     background: none;
@@ -206,9 +222,6 @@
     cursor: pointer;
     z-index: 101;
     position: relative;
-    right: 0;
-    top: 0;
-    margin-right: 0.5rem;
   }
 
   .nav {
@@ -218,14 +231,17 @@
     width: 100%;
     background: #fff;
     flex-direction: column;
-    gap: 0.5rem;
+    align-items: flex-start;   /* ✅ FIX: align links to left */
+    gap: 0.75rem;
     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    padding: 1rem 0;
+    padding: 1rem;
     max-height: 0;
     opacity: 0;
     overflow: hidden;
     pointer-events: none;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
   }
+
   .nav.nav-open {
     max-height: 300px;
     opacity: 1;
@@ -233,20 +249,29 @@
   }
 }
 
-/* Desktop adjustments */
-@media (min-width: 769px) {
-  .menu-btn {
-    display: none;
+/* --- Large desktops --- */
+@media (min-width: 1025px) {
+  .search {
+    max-width: 500px;
   }
+
   .nav {
+    display: flex;
     position: static;
-    flex-direction: row;
-    background: none;
-    box-shadow: none;
-    padding: 0;
     max-height: none;
     opacity: 1;
     pointer-events: auto;
+    box-shadow: none;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .nav-link {
+    font-size: 1rem;
+  }
+
+  .menu-btn {
+    display: none; /* hide hamburger on desktop */
   }
 }
 

@@ -65,9 +65,9 @@ export default function FamilyLaw() {
                                 <p>Your trusted partner in navigating legal complexities with confidence and clarity. 
                                    We provide comprehensive legal resources to empower your decisions.</p>
                                 
-                                <button className="cta-button" onClick={handleExploreClick}>
+                                {/* <button className="cta-button" onClick={handleExploreClick}>
                                     Explore Legal Resources →
-                                </button>
+                                </button> */}
                                 
                                 <div className="feature-grid">
                                     {features.map((feature, index) => (
