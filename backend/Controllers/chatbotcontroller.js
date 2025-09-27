@@ -10,7 +10,7 @@ export const chatWithBot = async (req, res) => {
   try {
     // init Gemini with API key from .env
     const genAI = new GoogleGenerativeAI('AIzaSyAUcCP-WoOD2Xy16-5YwgOJZ5Y--gXAfrA');
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
     // simple prompt with optional history
     let prompt = "You are a helpful assistant which gives me one line answer\n\n";
