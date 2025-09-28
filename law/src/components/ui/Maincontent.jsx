@@ -5,7 +5,7 @@ import { Card, CardContent } from '/src/components/ui/Card';
 import { Button } from '/src/components/ui/button';
 import axios from 'axios';
 import legalBg from '/src/assets/legal-bg.jpg';
-import './maincontent.css';
+import './Maincontent.css';
 import './articles.css';
 
 export function Maincontent() {

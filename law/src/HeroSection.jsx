@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { LandingNavbar } from "./components/Landingnavbar";
 import bgImage from "./assets/legal-bg.jpg";
-import "./HeroSection.css";
+import "./Herosection.css";
 
 const HeroSection = () => {
   const navigate = useNavigate();

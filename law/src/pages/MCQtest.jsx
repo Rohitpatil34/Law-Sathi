@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-import { Navbar } from "@/components/ui/Navbar";
+import { Navbar } from "../components/ui/Navbar";
 import { useNavigate } from "react-router-dom";
 import './MCQtest.css';
 
