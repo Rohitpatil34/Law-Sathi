@@ -3,6 +3,10 @@
 **LawSathi** is a web-based educational platform built as part of the IITB EdTech Internship (Track 2 – Fullstack). The platform aims to simplify complex Indian legal content by offering categorized, act-wise, and section-wise information along with AI assistance, mock tests, and multilingual support.
 
 ---
+## Live Demo
+https://law-sathi-ac41.vercel.app/
+
+---
 
 ## 🚨 Problem Statement
 
@@ -22,11 +26,7 @@ LawSathi simplifies Indian laws by providing:
 
 - 📂 **Categorized Content** – Act-wise and domain-wise legal browsing (e.g., Family Law, Criminal Law)
 - 📝 **Plain English Summaries** – Simplified legal texts for better comprehension
-- 💬 **AI Chatbot Assistant** – Get instant answers to legal queries
-- 📚 **Real-Life Examples** – Understand laws in real context
-- 🧪 **Mock Tests** – Practice legal questions with scoring and explanations
-- 🌐 **Multilingual Support** – Hindi translations & audio narration using TTS
-- 🔖 **Bookmarking & Personalization** – Save content for future reference
+
 
 ---
 
@@ -37,7 +37,6 @@ LawSathi simplifies Indian laws by providing:
 | Frontend   | React.js, Tailwind CSS         |
 | Backend    | Express.js and node.js         |
 | Database   | MongoDB (NoSQL)                |
-| AI/NLP     | OpenAI LLM APIs, gTTS          |
 | DevOps     | Git, GitHub                    |
 
 ---
@@ -46,10 +45,8 @@ LawSathi simplifies Indian laws by providing:
 
 - 🔍 Full-text search of laws and sections  
 - 🗂️ Domain-wise categorization (e.g., Criminal, Civil, Family Law)  
-- 🤖 Smart chatbot using LLM for legal Q&A  
-- 📖 Plain language summaries with Hindi translations  
-- 🧪 Interactive quizzes with auto-scoring  
-- 🗣️ Text-to-speech narration for legal summaries  
+- 🤖 Smart chatbot using LLM for legal Q&A   
+- 🧪 Interactive quizzes with auto-scoring   
 - 🧭 Easy navigation with breadcrumbs and sidebar  
 - 📑 Source: Scraped and cleaned from [India Code](https://www.indiacode.nic.in/)
 
@@ -60,11 +57,57 @@ LawSathi simplifies Indian laws by providing:
 1. **User Interface (React.js)** – Clean and responsive layout with law categories and test modules  
 2. **Backend API (Flask)** – Serves legal content, quiz data, and chatbot integration  
 3. **Database (MongoDB)** – Stores structured legal data, mock test records, and user profiles  
-4. **AI Agents** –   
-   - Chatbot Q&A (LLM)  
-   - Hindi Translator + TTS  
+  
 
 ---
+Here’s a **step-by-step guide** for running **LawSathi** locally:
+
+---
+
+## ⚙️ Setup & Run Instructions
+
+### 1️⃣ Clone the repository
+
+```bash
+git clone https://github.com/Rohitpatil34/Law-Sathi.git
+cd LawSathi
+```
+
+---
+
+### 2️⃣ Install dependencies (root)
+
+At the root folder (where `package.json` exists):
+
+```bash
+npm install
+```
+
+---
+
+### 3️⃣ Run the **frontend**
+
+```bash
+cd law   # go inside frontend folder
+npm install   # (first time only, to install frontend deps)
+npm run dev   # starts frontend 
+```
+
+---
+
+### 4️⃣ Run the **backend**
+
+Open a **new terminal** (keep frontend running):
+
+```bash
+cd backend
+npm install   # (first time only, to install backend deps)
+npm run dev   # starts backend 
+```
+
+---
+
+
 
 
 
