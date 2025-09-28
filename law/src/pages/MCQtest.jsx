@@ -21,7 +21,7 @@ export default function MCQTest() {
     setScore(0);
 
     try {
-      const res = await axios.post("http://localhost:8000/test", { law });
+      const res = await axios.post(`${import.meta.env.VITE_API_URL}/test`, { law });
       setQuestions(res.data.questions || []);
     } catch (err) {
       console.error("Error fetching questions:", err);

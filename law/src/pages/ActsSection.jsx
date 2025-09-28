@@ -18,7 +18,7 @@ export default function ActDetails() {
   useEffect(() => {
     const fetchSections = async () => {
       try {
-        const response = await fetch("http://localhost:8000/act/section", {
+        const response = await fetch(`${import.meta.env.VITE_API_URL}/act/section`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ actId }),

@@ -19,7 +19,7 @@ export default function MarriageFamily() {
     const fetchActs = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:8000/act/category/${encodeURIComponent(category)}`
+          `${import.meta.env.VITE_API_URL}/act/category/${encodeURIComponent(category)}`
         );
         setActs(res.data); 
       } catch (err) {

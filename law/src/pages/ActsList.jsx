@@ -20,7 +20,7 @@ export default function ActsList() {
     const fetchActs = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:8000/act/category/${encodeURIComponent(subcategory)}`
+          `${import.meta.env.VITE_API_URL}/act/category/${encodeURIComponent(subcategory)}`
         );
         setActs(res.data);
       } catch (err) {

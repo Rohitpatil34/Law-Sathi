@@ -39,7 +39,7 @@ export function Navbar() {
     const fetchSuggestions = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:8000/act/search?query=${query}`
+          `${import.meta.env.VITE_API_URL}/act/search?query=${query}`
         );
         setSuggestions(res.data);
         setShowDropdown(true);

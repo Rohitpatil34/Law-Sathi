@@ -20,7 +20,7 @@ export function Sidebar() {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const res = await axios.get("http://localhost:8000/act/main-categories");
+        const res = await axios.get(`${import.meta.env.VITE_API_URL}/act/main-categories`);
         setCategories(res.data);
       } catch (err) {
         console.error("Error fetching categories:", err);

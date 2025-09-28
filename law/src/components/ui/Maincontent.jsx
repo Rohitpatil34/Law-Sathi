@@ -17,7 +17,7 @@ export function Maincontent() {
     const fetchTopics = async () => {
       try {
         const res = await axios.get(
-          `http://localhost:8000/act/main-category/${encodeURIComponent(mainCategory)}`
+          `${import.meta.env.VITE_API_URL}/act/main-category/${encodeURIComponent(mainCategory)}`
         );
         setTopics(res.data);
       } catch (err) {

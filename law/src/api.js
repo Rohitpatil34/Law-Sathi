@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const BASE_URL = 'http://localhost:8000/acts';
+const BASE_URL = `${import.meta.env.VITE_API_URL}/acts`;
 
 export const fetchMainCategories = () =>
   axios.get(`${BASE_URL}/main-categories`);
