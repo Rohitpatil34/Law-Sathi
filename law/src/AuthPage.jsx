@@ -24,9 +24,27 @@ const AuthPage = ({ isLogin = true }) => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    // ✅ Placeholder for email/password login/signup logic
-    // You can implement Firebase auth or custom API here
-    // On success, redirect:
+    
+    // Fix: Capture email from the form inputs
+    const email = e.target.elements.email.value;
+    const password = e.target.elements.password.value;
+
+    if (!email || !password) {
+      alert("Please enter both email and password.");
+      return;
+    }
+
+    // Fix: Create a user object (mocking a real login response)
+    const user = {
+      email: email,
+      displayName: email.split('@')[0], // Uses the part before @ as a name
+      uid: "mock-user-id-" + Date.now()
+    };
+
+    // Fix: Store user details so the app knows we are logged in
+    localStorage.setItem("user", JSON.stringify(user));
+    console.log("Manual Login User stored:", user);
+
     navigate("/FamilyLaw");
   };
 
